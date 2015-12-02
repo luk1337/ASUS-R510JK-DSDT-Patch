@@ -2081,127 +2081,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     Return (0x0F)
                 }
             }
-
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
-            Zero
             Device (B0D4)
             {
                 Name (_ADR, 0x00040000)  // _ADR: Address
@@ -8986,6 +8865,17 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Return (GPRW (0x0D, 0x04))
             }
+            Method (_DSM, 4, NotSerialized)
+            {
+                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
+                Return (Package()
+                {
+                    "layout-id", Buffer() { 12, 0x00, 0x00, 0x00 },
+                    "hda-gfx", Buffer() { "onboard-1" },
+                    "PinConfigurations", Buffer() { },
+                    //"MaximumBootBeepVolume", 77,
+                })
+            }
         }
 
         Scope (RP01)
@@ -10168,7 +10058,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             MNIO (Arg0)
             MNIO ("\n")
             Return (MDBG)
-            Arg0
         }
 
         Return (Zero)

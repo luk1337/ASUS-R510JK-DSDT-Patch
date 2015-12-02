@@ -683,7 +683,7 @@ DefinitionBlock ("SSDT-4.aml", "SSDT", 1, "SaSsdt", "SaSsdt ", 0x00003000)
             }
         }
 
-        Device (B0D3)
+        Device (HDAU)
         {
             Name (_ADR, 0x00030000)  // _ADR: Address
             Name (BARA, 0x80000000)
@@ -910,6 +910,15 @@ DefinitionBlock ("SSDT-4.aml", "SSDT", 1, "SaSsdt", "SaSsdt ", 0x00003000)
                         }
                     }
                 }
+            }
+            Method (_DSM, 4, NotSerialized)
+            {
+                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
+                Return (Package()
+                {
+                    "layout-id", Buffer() { 12, 0x00, 0x00, 0x00 },
+                    "hda-gfx", Buffer() { "onboard-1" },
+                })
             }
         }
 
@@ -2991,12 +3000,12 @@ DefinitionBlock ("SSDT-4.aml", "SSDT", 1, "SaSsdt", "SaSsdt ", 0x00003000)
                         If (LEqual (PARM, One))
                         {
                             Or (\_SB.PCI0.AUDE, 0x20, \_SB.PCI0.AUDE)
-                            \_SB.PCI0.B0D3.ARST ()
-                            \_SB.PCI0.B0D3.ABWA (One)
-                            \_SB.PCI0.B0D3.ASTR ()
-                            \_SB.PCI0.B0D3.AINI ()
-                            \_SB.PCI0.B0D3.CXDC ()
-                            \_SB.PCI0.B0D3.ABWA (Zero)
+                            \_SB.PCI0.HDAU.ARST ()
+                            \_SB.PCI0.HDAU.ABWA (One)
+                            \_SB.PCI0.HDAU.ASTR ()
+                            \_SB.PCI0.HDAU.AINI ()
+                            \_SB.PCI0.HDAU.CXDC ()
+                            \_SB.PCI0.HDAU.ABWA (Zero)
                             Notify (\_SB.PCI0, Zero)
                         }
 
@@ -4344,6 +4353,14 @@ DefinitionBlock ("SSDT-4.aml", "SSDT", 1, "SaSsdt", "SaSsdt ", 0x00003000)
                     1931, 2002, 2074, 2147,
                     2221, 2296, 2373, 2452,
                     2531, 2612, 2694, 2777,
+                })
+            }
+            Method (_DSM, 4, NotSerialized)
+            {
+                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
+                Return (Package()
+                {
+                    "hda-gfx", Buffer() { "onboard-1" },
                 })
             }
         }
