@@ -1,6 +1,5 @@
 >DSDT
 * https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/syntax/fix_PARSEOP_ZERO.txt
-* https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/audio/audio_HDEF-layout12.txt
 * https://raw.githubusercontent.com/RehabMan/Laptop-DSDT-Patch/master/battery/battery_ASUS-N55SL.txt
 
 >SSDT-4

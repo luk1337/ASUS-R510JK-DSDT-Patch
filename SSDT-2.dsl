@@ -5,13 +5,13 @@
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-2.aml, Tue Dec  1 20:15:58 2015
+ * Disassembly of SSDT-2.aml, Fri Dec  4 23:05:21 2015
  *
  * Original Table Header:
  *     Signature        "SSDT"
  *     Length           0x00000AD8 (2776)
  *     Revision         0x01
- *     Checksum         0xDF
+ *     Checksum         0x30
  *     OEM ID           "PmRef"
  *     OEM Table ID     "CpuPm"
  *     OEM Revision     0x00003000 (12288)
@@ -36,16 +36,16 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
         Name (SSDT, Package (0x0C)
         {
             "CPU0IST ", 
-            0xC89B0A98, 
+            0xC89AFA98, 
             0x00000539, 
             "APIST   ", 
-            0xC9AE3618, 
+            0xC9AE2618, 
             0x000005AA, 
             "CPU0CST ", 
-            0xC9AE3C18, 
+            0xC9AE2C18, 
             0x000003D3, 
             "APCST   ", 
-            0xC9AE2D98, 
+            0xC9AE1D98, 
             0x00000119
         })
         Name (\PDC0, 0x80000000)
@@ -61,7 +61,7 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
 
     Scope (\_PR)
     {
-        OperationRegion (PPMT, SystemMemory, 0xCAB14F18, 0x003A)
+        OperationRegion (PPMT, SystemMemory, 0xCAB13F18, 0x003A)
         Field (PPMT, AnyAcc, Lock, Preserve)
         {
             PGRV,   8, 

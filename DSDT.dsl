@@ -5,18 +5,18 @@
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Tue Dec  1 20:15:58 2015
+ * Disassembly of DSDT.aml, Fri Dec  4 23:05:21 2015
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00013C11 (80913)
+ *     Length           0x00014480 (83072)
  *     Revision         0x02
- *     Checksum         0x2D
+ *     Checksum         0x4E
  *     OEM ID           "Apple "
  *     OEM Table ID     "Notebook"
  *     OEM Revision     0x00000012 (18)
  *     Compiler ID      "INTL"
- *     Compiler Version 0x20120711 (538052369)
+ *     Compiler Version 0x20100331 (537920305)
  */
 DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 {
@@ -188,10 +188,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
     Name (SS3, One)
     Name (SS4, One)
     Name (IOST, 0x4400)
-    Name (TOPM, 0x00000000)
+    Name (TOPM, Zero)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0xCAB13C18, 0x02B2)
+    OperationRegion (GNVS, SystemMemory, 0xCAB12C18, 0x02B2)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -2081,6 +2081,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     Return (0x0F)
                 }
             }
+
             Device (B0D4)
             {
                 Name (_ADR, 0x00040000)  // _ADR: Address
@@ -5851,24 +5852,24 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
     Name (RPA5, 0x001C0005)
     Name (RPA6, 0x001C0006)
     Name (RPA7, 0x001C0007)
-    Name (PCHS, 0x00000001)
+    Name (PCHS, One)
     Name (SRMB, 0xF7FE0000)
-    Name (PML1, 0x00000846)
-    Name (PML2, 0x00000846)
-    Name (PML3, 0x00000846)
-    Name (PML4, 0x00000846)
-    Name (PML5, 0x00000846)
-    Name (PML6, 0x00000846)
-    Name (PML7, 0x00000846)
-    Name (PML8, 0x00000846)
-    Name (PNL1, 0x00000846)
-    Name (PNL2, 0x00000846)
-    Name (PNL3, 0x00000846)
-    Name (PNL4, 0x00000846)
-    Name (PNL5, 0x00000846)
-    Name (PNL6, 0x00000846)
-    Name (PNL7, 0x00000846)
-    Name (PNL8, 0x00000846)
+    Name (PML1, 0x0846)
+    Name (PML2, 0x0846)
+    Name (PML3, 0x0846)
+    Name (PML4, 0x0846)
+    Name (PML5, 0x0846)
+    Name (PML6, 0x0846)
+    Name (PML7, 0x0846)
+    Name (PML8, 0x0846)
+    Name (PNL1, 0x0846)
+    Name (PNL2, 0x0846)
+    Name (PNL3, 0x0846)
+    Name (PNL4, 0x0846)
+    Name (PNL5, 0x0846)
+    Name (PNL6, 0x0846)
+    Name (PNL7, 0x0846)
+    Name (PNL8, 0x0846)
     Scope (\)
     {
         OperationRegion (IO_D, SystemIO, 0x0810, 0x04)
@@ -8865,15 +8866,29 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Return (GPRW (0x0D, 0x04))
             }
-            Method (_DSM, 4, NotSerialized)
+
+            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }
-                Return (Package()
+                If (LEqual (Arg2, Zero))
                 {
-                    "layout-id", Buffer() { 12, 0x00, 0x00, 0x00 },
-                    "hda-gfx", Buffer() { "onboard-1" },
-                    "PinConfigurations", Buffer() { },
-                    //"MaximumBootBeepVolume", 77,
+                    Return (Buffer (One)
+                    {
+                         0x03                                           
+                    })
+                }
+
+                Return (Package (0x06)
+                {
+                    "layout-id", 
+                    Unicode ("\x0C"), 
+                    "hda-gfx", 
+                    Buffer (0x0A)
+                    {
+                        "onboard-1"
+                    }, 
+
+                    "PinConfigurations", 
+                    Buffer (Zero) {}
                 })
             }
         }
@@ -12143,8 +12158,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 Offset (0x8A), 
                 HKEN,   1, 
                 Offset (0x93), 
-                TH00,8,TH01,8, 
-                TH10,8,TH11,8, 
+                TH00,   8, 
+                TH01,   8, 
+                TH10,   8, 
+                TH11,   8, 
                 TSTP,   8, 
                 Offset (0x9C), 
                 CDT4,   8, 
@@ -12169,7 +12186,8 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 B0TM,   16, 
                 B0C1,   16, 
                 B0C2,   16, 
-                XC30,8,XC31,8, 
+                XC30,   8, 
+                XC31,   8, 
                 B0C4,   16, 
                 Offset (0xD0), 
                 B1PN,   16, 
@@ -12182,16 +12200,19 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 B1TM,   16, 
                 B1C1,   16, 
                 B1C2,   16, 
-                YC30,8,YC31,8, 
+                YC30,   8, 
+                YC31,   8, 
                 B1C4,   16, 
                 Offset (0xF0), 
                 Offset (0xF2), 
                 Offset (0xF4), 
-                B0S0,8,B0S1,8, 
+                B0S0,   8, 
+                B0S1,   8, 
                 Offset (0xF8), 
                 Offset (0xFA), 
                 Offset (0xFC), 
-                B1S0,8,B1S1,8
+                B1S0,   8, 
+                B1S1,   8
             }
 
             Name (SMBF, Zero)
@@ -12205,16 +12226,38 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 CDFG,   1, 
                 ADDR,   8, 
                 CMDB,   8, 
-                //BDAT, 256,
-BA00,8,BA01,8,BA02,8,BA03,8,
-BA04,8,BA05,8,BA06,8,BA07,8,
-BA08,8,BA09,8,BA0A,8,BA0B,8,
-BA0C,8,BA0D,8,BA0E,8,BA0F,8,
-BA10,8,BA11,8,BA12,8,BA13,8,
-BA14,8,BA15,8,BA16,8,BA17,8,
-BA18,8,BA19,8,BA1A,8,BA1B,8,
-BA1C,8,BA1D,8,BA1E,8,BA1F,8
-, 
+                BA00,   8, 
+                BA01,   8, 
+                BA02,   8, 
+                BA03,   8, 
+                BA04,   8, 
+                BA05,   8, 
+                BA06,   8, 
+                BA07,   8, 
+                BA08,   8, 
+                BA09,   8, 
+                BA0A,   8, 
+                BA0B,   8, 
+                BA0C,   8, 
+                BA0D,   8, 
+                BA0E,   8, 
+                BA0F,   8, 
+                BA10,   8, 
+                BA11,   8, 
+                BA12,   8, 
+                BA13,   8, 
+                BA14,   8, 
+                BA15,   8, 
+                BA16,   8, 
+                BA17,   8, 
+                BA18,   8, 
+                BA19,   8, 
+                BA1A,   8, 
+                BA1B,   8, 
+                BA1C,   8, 
+                BA1D,   8, 
+                BA1E,   8, 
+                BA1F,   8, 
                 BCNT,   8, 
                     ,   1, 
                 ALAD,   7, 
@@ -12232,16 +12275,38 @@ BA1C,8,BA1D,8,BA1E,8,BA1F,8
                 CDF2,   1, 
                 ADD2,   8, 
                 CMD2,   8, 
-                //BDA2, 256,
-BB00,8,BB01,8,BB02,8,BB03,8,
-BB04,8,BB05,8,BB06,8,BB07,8,
-BB08,8,BB09,8,BB0A,8,BB0B,8,
-BB0C,8,BB0D,8,BB0E,8,BB0F,8,
-BB10,8,BB11,8,BB12,8,BB13,8,
-BB14,8,BB15,8,BB16,8,BB17,8,
-BB18,8,BB19,8,BB1A,8,BB1B,8,
-BB1C,8,BB1D,8,BB1E,8,BB1F,8
-, 
+                BB00,   8, 
+                BB01,   8, 
+                BB02,   8, 
+                BB03,   8, 
+                BB04,   8, 
+                BB05,   8, 
+                BB06,   8, 
+                BB07,   8, 
+                BB08,   8, 
+                BB09,   8, 
+                BB0A,   8, 
+                BB0B,   8, 
+                BB0C,   8, 
+                BB0D,   8, 
+                BB0E,   8, 
+                BB0F,   8, 
+                BB10,   8, 
+                BB11,   8, 
+                BB12,   8, 
+                BB13,   8, 
+                BB14,   8, 
+                BB15,   8, 
+                BB16,   8, 
+                BB17,   8, 
+                BB18,   8, 
+                BB19,   8, 
+                BB1A,   8, 
+                BB1B,   8, 
+                BB1C,   8, 
+                BB1D,   8, 
+                BB1E,   8, 
+                BB1F,   8, 
                 BCN2,   8, 
                     ,   1, 
                 ALA2,   7, 
@@ -12266,7 +12331,8 @@ BB1C,8,BB1D,8,BB1E,8,BB1F,8
             Field (SMBX, ByteAcc, NoLock, Preserve)
             {
                 Offset (0x04), 
-                T2B0,8,T2B1,8
+                T2B0,   8, 
+                T2B1,   8
             }
 
             OperationRegion (NSBS, EmbeddedControl, 0x40, 0x04)
@@ -12334,153 +12400,156 @@ BB1C,8,BB1D,8,BB1E,8,BB1F,8
                     Store (Arg1, ECFL)
                 }
             }
+
             Method (RDBA, 0, Serialized)
             {
-                Name (TEMP, Buffer(0x20) { })
-                Store (BA00, Index(TEMP, 0x00))
-                Store (BA01, Index(TEMP, 0x01))
-                Store (BA02, Index(TEMP, 0x02))
-                Store (BA03, Index(TEMP, 0x03))
-                Store (BA04, Index(TEMP, 0x04))
-                Store (BA05, Index(TEMP, 0x05))
-                Store (BA06, Index(TEMP, 0x06))
-                Store (BA07, Index(TEMP, 0x07))
-                Store (BA08, Index(TEMP, 0x08))
-                Store (BA09, Index(TEMP, 0x09))
-                Store (BA0A, Index(TEMP, 0x0A))
-                Store (BA0B, Index(TEMP, 0x0B))
-                Store (BA0C, Index(TEMP, 0x0C))
-                Store (BA0D, Index(TEMP, 0x0D))
-                Store (BA0E, Index(TEMP, 0x0E))
-                Store (BA0F, Index(TEMP, 0x0F))
-                Store (BA10, Index(TEMP, 0x10))
-                Store (BA11, Index(TEMP, 0x11))
-                Store (BA12, Index(TEMP, 0x12))
-                Store (BA13, Index(TEMP, 0x13))
-                Store (BA14, Index(TEMP, 0x14))
-                Store (BA15, Index(TEMP, 0x15))
-                Store (BA16, Index(TEMP, 0x16))
-                Store (BA17, Index(TEMP, 0x17))
-                Store (BA18, Index(TEMP, 0x18))
-                Store (BA19, Index(TEMP, 0x19))
-                Store (BA1A, Index(TEMP, 0x1A))
-                Store (BA1B, Index(TEMP, 0x1B))
-                Store (BA1C, Index(TEMP, 0x1C))
-                Store (BA1D, Index(TEMP, 0x1D))
-                Store (BA1E, Index(TEMP, 0x1E))
-                Store (BA1F, Index(TEMP, 0x1F))
+                Name (TEMP, Buffer (0x20) {})
+                Store (BA00, Index (TEMP, Zero))
+                Store (BA01, Index (TEMP, One))
+                Store (BA02, Index (TEMP, 0x02))
+                Store (BA03, Index (TEMP, 0x03))
+                Store (BA04, Index (TEMP, 0x04))
+                Store (BA05, Index (TEMP, 0x05))
+                Store (BA06, Index (TEMP, 0x06))
+                Store (BA07, Index (TEMP, 0x07))
+                Store (BA08, Index (TEMP, 0x08))
+                Store (BA09, Index (TEMP, 0x09))
+                Store (BA0A, Index (TEMP, 0x0A))
+                Store (BA0B, Index (TEMP, 0x0B))
+                Store (BA0C, Index (TEMP, 0x0C))
+                Store (BA0D, Index (TEMP, 0x0D))
+                Store (BA0E, Index (TEMP, 0x0E))
+                Store (BA0F, Index (TEMP, 0x0F))
+                Store (BA10, Index (TEMP, 0x10))
+                Store (BA11, Index (TEMP, 0x11))
+                Store (BA12, Index (TEMP, 0x12))
+                Store (BA13, Index (TEMP, 0x13))
+                Store (BA14, Index (TEMP, 0x14))
+                Store (BA15, Index (TEMP, 0x15))
+                Store (BA16, Index (TEMP, 0x16))
+                Store (BA17, Index (TEMP, 0x17))
+                Store (BA18, Index (TEMP, 0x18))
+                Store (BA19, Index (TEMP, 0x19))
+                Store (BA1A, Index (TEMP, 0x1A))
+                Store (BA1B, Index (TEMP, 0x1B))
+                Store (BA1C, Index (TEMP, 0x1C))
+                Store (BA1D, Index (TEMP, 0x1D))
+                Store (BA1E, Index (TEMP, 0x1E))
+                Store (BA1F, Index (TEMP, 0x1F))
                 Return (TEMP)
             }
+
             Method (WRBA, 1, Serialized)
             {
-                Name (TEMP, Buffer(0x20) { })
+                Name (TEMP, Buffer (0x20) {})
                 Store (Arg0, TEMP)
-                Store (DerefOf(Index(TEMP, 0x00)), BA00)
-                Store (DerefOf(Index(TEMP, 0x01)), BA01)
-                Store (DerefOf(Index(TEMP, 0x02)), BA02)
-                Store (DerefOf(Index(TEMP, 0x03)), BA03)
-                Store (DerefOf(Index(TEMP, 0x04)), BA04)
-                Store (DerefOf(Index(TEMP, 0x05)), BA05)
-                Store (DerefOf(Index(TEMP, 0x06)), BA06)
-                Store (DerefOf(Index(TEMP, 0x07)), BA07)
-                Store (DerefOf(Index(TEMP, 0x08)), BA08)
-                Store (DerefOf(Index(TEMP, 0x09)), BA09)
-                Store (DerefOf(Index(TEMP, 0x0A)), BA0A)
-                Store (DerefOf(Index(TEMP, 0x0B)), BA0B)
-                Store (DerefOf(Index(TEMP, 0x0C)), BA0C)
-                Store (DerefOf(Index(TEMP, 0x0D)), BA0D)
-                Store (DerefOf(Index(TEMP, 0x0E)), BA0E)
-                Store (DerefOf(Index(TEMP, 0x0F)), BA0F)
-                Store (DerefOf(Index(TEMP, 0x10)), BA10)
-                Store (DerefOf(Index(TEMP, 0x11)), BA11)
-                Store (DerefOf(Index(TEMP, 0x12)), BA12)
-                Store (DerefOf(Index(TEMP, 0x13)), BA13)
-                Store (DerefOf(Index(TEMP, 0x14)), BA14)
-                Store (DerefOf(Index(TEMP, 0x15)), BA15)
-                Store (DerefOf(Index(TEMP, 0x16)), BA16)
-                Store (DerefOf(Index(TEMP, 0x17)), BA17)
-                Store (DerefOf(Index(TEMP, 0x18)), BA18)
-                Store (DerefOf(Index(TEMP, 0x19)), BA19)
-                Store (DerefOf(Index(TEMP, 0x1A)), BA1A)
-                Store (DerefOf(Index(TEMP, 0x1B)), BA1B)
-                Store (DerefOf(Index(TEMP, 0x1C)), BA1C)
-                Store (DerefOf(Index(TEMP, 0x1D)), BA1D)
-                Store (DerefOf(Index(TEMP, 0x1E)), BA1E)
-                Store (DerefOf(Index(TEMP, 0x1F)), BA1F)
+                Store (DerefOf (Index (TEMP, Zero)), BA00)
+                Store (DerefOf (Index (TEMP, One)), BA01)
+                Store (DerefOf (Index (TEMP, 0x02)), BA02)
+                Store (DerefOf (Index (TEMP, 0x03)), BA03)
+                Store (DerefOf (Index (TEMP, 0x04)), BA04)
+                Store (DerefOf (Index (TEMP, 0x05)), BA05)
+                Store (DerefOf (Index (TEMP, 0x06)), BA06)
+                Store (DerefOf (Index (TEMP, 0x07)), BA07)
+                Store (DerefOf (Index (TEMP, 0x08)), BA08)
+                Store (DerefOf (Index (TEMP, 0x09)), BA09)
+                Store (DerefOf (Index (TEMP, 0x0A)), BA0A)
+                Store (DerefOf (Index (TEMP, 0x0B)), BA0B)
+                Store (DerefOf (Index (TEMP, 0x0C)), BA0C)
+                Store (DerefOf (Index (TEMP, 0x0D)), BA0D)
+                Store (DerefOf (Index (TEMP, 0x0E)), BA0E)
+                Store (DerefOf (Index (TEMP, 0x0F)), BA0F)
+                Store (DerefOf (Index (TEMP, 0x10)), BA10)
+                Store (DerefOf (Index (TEMP, 0x11)), BA11)
+                Store (DerefOf (Index (TEMP, 0x12)), BA12)
+                Store (DerefOf (Index (TEMP, 0x13)), BA13)
+                Store (DerefOf (Index (TEMP, 0x14)), BA14)
+                Store (DerefOf (Index (TEMP, 0x15)), BA15)
+                Store (DerefOf (Index (TEMP, 0x16)), BA16)
+                Store (DerefOf (Index (TEMP, 0x17)), BA17)
+                Store (DerefOf (Index (TEMP, 0x18)), BA18)
+                Store (DerefOf (Index (TEMP, 0x19)), BA19)
+                Store (DerefOf (Index (TEMP, 0x1A)), BA1A)
+                Store (DerefOf (Index (TEMP, 0x1B)), BA1B)
+                Store (DerefOf (Index (TEMP, 0x1C)), BA1C)
+                Store (DerefOf (Index (TEMP, 0x1D)), BA1D)
+                Store (DerefOf (Index (TEMP, 0x1E)), BA1E)
+                Store (DerefOf (Index (TEMP, 0x1F)), BA1F)
             }
+
             Method (RDBB, 0, Serialized)
             {
-                Name (TEMP, Buffer(0x20) { })
-                Store (BB00, Index(TEMP, 0x00))
-                Store (BB01, Index(TEMP, 0x01))
-                Store (BB02, Index(TEMP, 0x02))
-                Store (BB03, Index(TEMP, 0x03))
-                Store (BB04, Index(TEMP, 0x04))
-                Store (BB05, Index(TEMP, 0x05))
-                Store (BB06, Index(TEMP, 0x06))
-                Store (BB07, Index(TEMP, 0x07))
-                Store (BB08, Index(TEMP, 0x08))
-                Store (BB09, Index(TEMP, 0x09))
-                Store (BB0A, Index(TEMP, 0x0A))
-                Store (BB0B, Index(TEMP, 0x0B))
-                Store (BB0C, Index(TEMP, 0x0C))
-                Store (BB0D, Index(TEMP, 0x0D))
-                Store (BB0E, Index(TEMP, 0x0E))
-                Store (BB0F, Index(TEMP, 0x0F))
-                Store (BB10, Index(TEMP, 0x10))
-                Store (BB11, Index(TEMP, 0x11))
-                Store (BB12, Index(TEMP, 0x12))
-                Store (BB13, Index(TEMP, 0x13))
-                Store (BB14, Index(TEMP, 0x14))
-                Store (BB15, Index(TEMP, 0x15))
-                Store (BB16, Index(TEMP, 0x16))
-                Store (BB17, Index(TEMP, 0x17))
-                Store (BB18, Index(TEMP, 0x18))
-                Store (BB19, Index(TEMP, 0x19))
-                Store (BB1A, Index(TEMP, 0x1A))
-                Store (BB1B, Index(TEMP, 0x1B))
-                Store (BB1C, Index(TEMP, 0x1C))
-                Store (BB1D, Index(TEMP, 0x1D))
-                Store (BB1E, Index(TEMP, 0x1E))
-                Store (BB1F, Index(TEMP, 0x1F))
+                Name (TEMP, Buffer (0x20) {})
+                Store (BB00, Index (TEMP, Zero))
+                Store (BB01, Index (TEMP, One))
+                Store (BB02, Index (TEMP, 0x02))
+                Store (BB03, Index (TEMP, 0x03))
+                Store (BB04, Index (TEMP, 0x04))
+                Store (BB05, Index (TEMP, 0x05))
+                Store (BB06, Index (TEMP, 0x06))
+                Store (BB07, Index (TEMP, 0x07))
+                Store (BB08, Index (TEMP, 0x08))
+                Store (BB09, Index (TEMP, 0x09))
+                Store (BB0A, Index (TEMP, 0x0A))
+                Store (BB0B, Index (TEMP, 0x0B))
+                Store (BB0C, Index (TEMP, 0x0C))
+                Store (BB0D, Index (TEMP, 0x0D))
+                Store (BB0E, Index (TEMP, 0x0E))
+                Store (BB0F, Index (TEMP, 0x0F))
+                Store (BB10, Index (TEMP, 0x10))
+                Store (BB11, Index (TEMP, 0x11))
+                Store (BB12, Index (TEMP, 0x12))
+                Store (BB13, Index (TEMP, 0x13))
+                Store (BB14, Index (TEMP, 0x14))
+                Store (BB15, Index (TEMP, 0x15))
+                Store (BB16, Index (TEMP, 0x16))
+                Store (BB17, Index (TEMP, 0x17))
+                Store (BB18, Index (TEMP, 0x18))
+                Store (BB19, Index (TEMP, 0x19))
+                Store (BB1A, Index (TEMP, 0x1A))
+                Store (BB1B, Index (TEMP, 0x1B))
+                Store (BB1C, Index (TEMP, 0x1C))
+                Store (BB1D, Index (TEMP, 0x1D))
+                Store (BB1E, Index (TEMP, 0x1E))
+                Store (BB1F, Index (TEMP, 0x1F))
                 Return (TEMP)
             }
             Method (WRBB, 1, Serialized)
             {
-                Name (TEMP, Buffer(0x20) { })
+                Name (TEMP, Buffer (0x20) {})
                 Store (Arg0, TEMP)
-                Store (DerefOf(Index(TEMP, 0x00)), BB00)
-                Store (DerefOf(Index(TEMP, 0x01)), BB01)
-                Store (DerefOf(Index(TEMP, 0x02)), BB02)
-                Store (DerefOf(Index(TEMP, 0x03)), BB03)
-                Store (DerefOf(Index(TEMP, 0x04)), BB04)
-                Store (DerefOf(Index(TEMP, 0x05)), BB05)
-                Store (DerefOf(Index(TEMP, 0x06)), BB06)
-                Store (DerefOf(Index(TEMP, 0x07)), BB07)
-                Store (DerefOf(Index(TEMP, 0x08)), BB08)
-                Store (DerefOf(Index(TEMP, 0x09)), BB09)
-                Store (DerefOf(Index(TEMP, 0x0A)), BB0A)
-                Store (DerefOf(Index(TEMP, 0x0B)), BB0B)
-                Store (DerefOf(Index(TEMP, 0x0C)), BB0C)
-                Store (DerefOf(Index(TEMP, 0x0D)), BB0D)
-                Store (DerefOf(Index(TEMP, 0x0E)), BB0E)
-                Store (DerefOf(Index(TEMP, 0x0F)), BB0F)
-                Store (DerefOf(Index(TEMP, 0x10)), BB10)
-                Store (DerefOf(Index(TEMP, 0x11)), BB11)
-                Store (DerefOf(Index(TEMP, 0x12)), BB12)
-                Store (DerefOf(Index(TEMP, 0x13)), BB13)
-                Store (DerefOf(Index(TEMP, 0x14)), BB14)
-                Store (DerefOf(Index(TEMP, 0x15)), BB15)
-                Store (DerefOf(Index(TEMP, 0x16)), BB16)
-                Store (DerefOf(Index(TEMP, 0x17)), BB17)
-                Store (DerefOf(Index(TEMP, 0x18)), BB18)
-                Store (DerefOf(Index(TEMP, 0x19)), BB19)
-                Store (DerefOf(Index(TEMP, 0x1A)), BB1A)
-                Store (DerefOf(Index(TEMP, 0x1B)), BB1B)
-                Store (DerefOf(Index(TEMP, 0x1C)), BB1C)
-                Store (DerefOf(Index(TEMP, 0x1D)), BB1D)
-                Store (DerefOf(Index(TEMP, 0x1E)), BB1E)
-                Store (DerefOf(Index(TEMP, 0x1F)), BB1F)
+                Store (DerefOf (Index (TEMP, Zero)), BB00)
+                Store (DerefOf (Index (TEMP, One)), BB01)
+                Store (DerefOf (Index (TEMP, 0x02)), BB02)
+                Store (DerefOf (Index (TEMP, 0x03)), BB03)
+                Store (DerefOf (Index (TEMP, 0x04)), BB04)
+                Store (DerefOf (Index (TEMP, 0x05)), BB05)
+                Store (DerefOf (Index (TEMP, 0x06)), BB06)
+                Store (DerefOf (Index (TEMP, 0x07)), BB07)
+                Store (DerefOf (Index (TEMP, 0x08)), BB08)
+                Store (DerefOf (Index (TEMP, 0x09)), BB09)
+                Store (DerefOf (Index (TEMP, 0x0A)), BB0A)
+                Store (DerefOf (Index (TEMP, 0x0B)), BB0B)
+                Store (DerefOf (Index (TEMP, 0x0C)), BB0C)
+                Store (DerefOf (Index (TEMP, 0x0D)), BB0D)
+                Store (DerefOf (Index (TEMP, 0x0E)), BB0E)
+                Store (DerefOf (Index (TEMP, 0x0F)), BB0F)
+                Store (DerefOf (Index (TEMP, 0x10)), BB10)
+                Store (DerefOf (Index (TEMP, 0x11)), BB11)
+                Store (DerefOf (Index (TEMP, 0x12)), BB12)
+                Store (DerefOf (Index (TEMP, 0x13)), BB13)
+                Store (DerefOf (Index (TEMP, 0x14)), BB14)
+                Store (DerefOf (Index (TEMP, 0x15)), BB15)
+                Store (DerefOf (Index (TEMP, 0x16)), BB16)
+                Store (DerefOf (Index (TEMP, 0x17)), BB17)
+                Store (DerefOf (Index (TEMP, 0x18)), BB18)
+                Store (DerefOf (Index (TEMP, 0x19)), BB19)
+                Store (DerefOf (Index (TEMP, 0x1A)), BB1A)
+                Store (DerefOf (Index (TEMP, 0x1B)), BB1B)
+                Store (DerefOf (Index (TEMP, 0x1C)), BB1C)
+                Store (DerefOf (Index (TEMP, 0x1D)), BB1D)
+                Store (DerefOf (Index (TEMP, 0x1E)), BB1E)
+                Store (DerefOf (Index (TEMP, 0x1F)), BB1F)
             }
         }
     }
@@ -14865,13 +14934,13 @@ BB1C,8,BB1D,8,BB1E,8,BB1F,8
                 If (Local0)
                 {
                     If (CHGS (Zero))
-{
-    Store (0x02, Local0)
-}
-Else
-{
-    Store (Zero, Local0)
-}
+                    {
+                        Store (0x02, Local0)
+                    }
+                    Else
+                    {
+                        Store (Zero, Local0)
+                    }
                 }
                 Else
                 {
@@ -15042,7 +15111,7 @@ Else
                     Divide (DerefOf (Index (BIXT, 0x0F)), 0x03E8, Local0, Index (BIXT, 0x0F))
                 }
 
-                Store (B1B2(^^LPCB.EC0.XC30,^^LPCB.EC0.XC31), Index (BIXT, 0x08))
+                Store (B1B2 (^^LPCB.EC0.XC30, ^^LPCB.EC0.XC31), Index (BIXT, 0x08))
                 Store (0x0001869F, Index (BIXT, 0x09))
                 Return (BIXT)
             }
@@ -15281,11 +15350,11 @@ Else
             {
                 If (BSLF)
                 {
-                    Store (B1B2(B1S0,B1S1), Local0)
+                    Store (B1B2 (B1S0, B1S1), Local0)
                 }
                 Else
                 {
-                    Store (B1B2(B0S0,B0S1), Local0)
+                    Store (B1B2 (B0S0, B0S1), Local0)
                 }
             }
             Else
@@ -18574,7 +18643,7 @@ Else
                     }
                 }
 
-                WRBA(Zero)
+                WRBA (Zero)
                 Store (Arg0, PRTC)
                 Store (SWTC (Arg0), Index (Local0, Zero))
                 If (LEqual (DerefOf (Index (Local0, Zero)), Zero))
@@ -18582,13 +18651,13 @@ Else
                     If (LEqual (Arg0, RDBL))
                     {
                         Store (BCNT, Index (Local0, One))
-                        Store (RDBA(), Index (Local0, 0x02))
+                        Store (RDBA (), Index (Local0, 0x02))
                     }
 
                     If (LEqual (Arg0, RDWD))
                     {
                         Store (0x02, Index (Local0, One))
-                        Store (B1B2(T2B0,T2B1), Index (Local0, 0x02))
+                        Store (B1B2 (T2B0, T2B1), Index (Local0, 0x02))
                     }
 
                     If (LEqual (Arg0, RDBT))
@@ -18657,7 +18726,7 @@ Else
 
             If (LLessEqual (Local2, 0x03E8))
             {
-                WRBA(Zero)
+                WRBA (Zero)
                 ShiftLeft (Arg1, One, Local3)
                 Store (Local3, ADDR)
                 If (LNotEqual (Arg0, WRQK))
@@ -18671,12 +18740,13 @@ Else
                 If (LEqual (Arg0, WRBL))
                 {
                     Store (Arg3, BCNT)
-                    WRBA(Arg4)
+                    WRBA (Arg4)
                 }
 
                 If (LEqual (Arg0, WRWD))
                 {
-                    Store(Arg4,T2B0) Store(ShiftRight(Arg4,8),T2B1)
+                    Store (Arg4, T2B0)
+                    Store (ShiftRight (Arg4, 0x08), T2B1)
                 }
 
                 If (LEqual (Arg0, WRBT))
@@ -18837,7 +18907,7 @@ Else
                         If (LOr (LEqual (Arg1, 0x0A), LEqual (Arg1, 0x0B)))
                         {
                             Store (DerefOf (Index (Arg6, Zero)), BCNT)
-                            WRBA(DerefOf (Index (Arg6, One)))
+                            WRBA (DerefOf (Index (Arg6, One)))
                         }
                         Else
                         {
@@ -18854,7 +18924,7 @@ Else
                         If (LOr (LEqual (Arg1, 0x0A), LEqual (Arg1, 0x0B)))
                         {
                             Store (DerefOf (Index (Arg6, Zero)), BCN2)
-                            WRBB(DerefOf (Index (Arg6, One)))
+                            WRBB (DerefOf (Index (Arg6, One)))
                         }
                         Else
                         {
@@ -18891,7 +18961,7 @@ Else
                             Store (DAT0, Index (Local1, One))
                             Store (DAT1, Index (Local1, 0x02))
                             Store (BCNT, Index (Local1, 0x03))
-                            Store (RDBA(), Index (Local1, 0x04))
+                            Store (RDBA (), Index (Local1, 0x04))
                         }
                         Else
                         {
@@ -18899,7 +18969,7 @@ Else
                             Store (DA20, Index (Local1, One))
                             Store (DA21, Index (Local1, 0x02))
                             Store (BCN2, Index (Local1, 0x03))
-                            Store (RDBB(), Index (Local1, 0x04))
+                            Store (RDBB (), Index (Local1, 0x04))
                         }
 
                         And (Local0, 0x1F, Local0)
@@ -19439,14 +19509,14 @@ Else
                     Store (Arg0, _T_0)
                     If (LEqual (_T_0, Zero))
                     {
-                        Store (B1B2(TH00,TH01), Local0)
+                        Store (B1B2 (TH00, TH01), Local0)
                         Break
                     }
                     Else
                     {
                         If (LEqual (_T_0, One))
                         {
-                            Store (B1B2(TH10,TH11), Local0)
+                            Store (B1B2 (TH10, TH11), Local0)
                             Break
                         }
                         Else
@@ -22407,5 +22477,7 @@ Else
         OEMW (Arg0)
     }
     Method (B1B2, 2, NotSerialized) { Return (Or (Arg0, ShiftLeft (Arg1, 8))) }
+
+    
 }
 
