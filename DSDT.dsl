@@ -4122,13 +4122,16 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Name (_HID, EisaId ("PNP0103"))  // _HID: Hardware ID
                     Name (_UID, Zero)  // _UID: Unique ID
-                    Name (BUF0, ResourceTemplate ()
-                    {
+                    Name (BUF0, ResourceTemplate()
+{
+    IRQNoFlags() { 0, 8, 11, 15 }
+
                         Memory32Fixed (ReadWrite,
                             0xFED00000,         // Address Base
                             0x00000400,         // Address Length
                             _Y0F)
                     })
+
                     Method (_STA, 0, NotSerialized)  // _STA: Status
                     {
                         If (LGreaterEqual (OSYS, 0x07D1))
@@ -4281,8 +4284,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x01,               // Alignment
                             0x02,               // Length
                             )
-                        IRQNoFlags ()
-                            {2}
+                        
                     })
                 }
 
@@ -4473,8 +4475,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x01,               // Alignment
                             0x08,               // Length
                             )
-                        IRQNoFlags ()
-                            {8}
+                        
                     })
                 }
 
@@ -4495,8 +4496,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x10,               // Alignment
                             0x04,               // Length
                             )
-                        IRQNoFlags ()
-                            {0}
+                        
                     })
                 }
 
@@ -8900,29 +8900,28 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
             
 
-            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+            Method (_DSM, 4, NotSerialized)
             {
-                If (LEqual (Arg2, Zero))
-                {
-                    Return (Buffer (One)
+                Store (Package (0x0c)
+                {                        
+                    "built-in", 
+                    Buffer (One)
                     {
-                         0x03                                           
-                    })
-                }
-
-                Return (Package (0x06)
-                {
-                    "layout-id", 
-                    Unicode ("\x0C"), 
-                    "hda-gfx", 
-                    Buffer (0x0A)
-                    {
-                        "onboard-1"
+                        0x00
                     }, 
-
-                    "PinConfigurations", 
-                    Buffer (Zero) {}
-                })
+                    "layout-id", 
+                    Buffer (0x04)
+                    {
+                        0x03, 0x00, 0x00, 0x00
+                    }, 
+                   "PinConfigurations", 
+                   Buffer (0x00)
+                   {
+                       0x00
+                   }
+                }, Local0)
+                DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                Return (Local0)
             }
             Name(_PRW, Package() { 0x0D, 0 })
         }
@@ -22511,6 +22510,36 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
         OEMW (Arg0)
     }
     Method (B1B2, 2, NotSerialized) { Return (Or (Arg0, ShiftLeft (Arg1, 8))) }
+    Method (DTGP, 5, NotSerialized)
+    {
+        If (LEqual (Arg0, Buffer (0x10)
+        {
+            /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44,
+            /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B
+        }))
+        {
+            If (LEqual (Arg1, One))
+            {
+                If (LEqual (Arg2, Zero))
+                {
+                    Store (Buffer (One)
+                    {
+                        0x03
+                    }, Arg4)
+                    Return (One)
+                }
+                If (LEqual (Arg2, One))
+                {
+                    Return (One)
+                }
+            }
+        }
+        Store (Buffer (One)
+        {
+            0x00
+        }, Arg4)
+        Return (Zero)
+    }
 
     
 }
