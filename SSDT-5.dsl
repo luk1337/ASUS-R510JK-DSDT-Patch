@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-5.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of SSDT-5.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -18,47 +18,47 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20120711 (538052369)
  */
-DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
+DefinitionBlock ("", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
 {
 
-    External (_SB_.PCI0.GFX0._DOD, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD01._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD01._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD02._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD02._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD03._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD03._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD04._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD04._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD05._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD05._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD06._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD06._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD07._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD07._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD08._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD08._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD09._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD09._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0A._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0A._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0B._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0B._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0C._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0C._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0D._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0D._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0E._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0E._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0F._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0F._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BCL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BCM, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BQC, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.WRAM, MethodObj)    // 2 Arguments
+    External (_SB_.PCI0.GFX0._DOD, MethodObj)
+    External (_SB_.PCI0.GFX0.DD01._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD01._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD02._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD02._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD03._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD03._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD04._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD04._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD05._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD05._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD06._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD06._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD07._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD07._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD08._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD08._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD09._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD09._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0A._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0A._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0B._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0B._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0C._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0C._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0D._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0D._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0E._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0E._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0F._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.DD0F._DGS, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._ADR, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._BCL, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._BCM, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._BQC, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)
+    External (_SB_.PCI0.GFX0.LCDD._DGS, MethodObj)
+    External (_SB_.PCI0.LPCB.EC0_.WRAM, MethodObj)
     External (_SB_.PCI0.PEG0, DeviceObj)
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
     External (_SB_.PCI0.PEG0.PEGP._ADR, IntObj)
@@ -66,7 +66,7 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
     External (EBAS, FieldUnitObj)
     External (EECP, FieldUnitObj)
     External (GBAS, FieldUnitObj)
-    External (GPRW, MethodObj)    // 2 Arguments
+    External (GPRW, MethodObj)
     External (HLRS, FieldUnitObj)
     External (HYSS, FieldUnitObj)
     External (P0UB, FieldUnitObj)
@@ -153,8 +153,7 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
 
         Method (BSPR, 2, NotSerialized)
         {
-            Store (Add (Add (Add (\XBAS, 0x8000), 0x091C), Multiply (Arg0, 0x20
-                )), Local7)
+            Store (Add (Add (Add (\XBAS, 0x8000), 0x091C), Multiply (Arg0, 0x20)), Local7)
             OperationRegion (PCI0, SystemMemory, Local7, 0x04)
             Field (PCI0, DWordAcc, NoLock, Preserve)
             {
@@ -481,9 +480,6 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
         Method (_INI, 0, NotSerialized)  // _INI: Initialize
         {
             Store (Zero, \_SB.PCI0.PEG0.PEGP._ADR)
-            //added to turn nvidia/radeon off
-            External(\_SB.PCI0.PEG0.PEGP._OFF, MethodObj)
-            _OFF()
         }
 
         Method (GMXB, 0, NotSerialized)
@@ -511,18 +507,15 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
                 Store (Zero, FBDL)
                 Store (0x08, CBDL)
             }
+            ElseIf (LEqual (LREV, Zero))
+            {
+                Store (Zero, FBDL)
+                Store (0x04, CBDL)
+            }
             Else
             {
-                If (LEqual (LREV, Zero))
-                {
-                    Store (Zero, FBDL)
-                    Store (0x04, CBDL)
-                }
-                Else
-                {
-                    Store (0x04, FBDL)
-                    Store (0x04, CBDL)
-                }
+                Store (0x04, FBDL)
+                Store (0x04, CBDL)
             }
 
             Store (One, INDX)
@@ -557,16 +550,13 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
                     Store (Zero, FBDL)
                 }
             }
+            ElseIf (LEqual (LREV, Zero))
+            {
+                Store (Subtract (0x04, CBDL), FBDL)
+            }
             Else
             {
-                If (LEqual (LREV, Zero))
-                {
-                    Store (Subtract (0x04, CBDL), FBDL)
-                }
-                Else
-                {
-                    Store (0x04, FBDL)
-                }
+                Store (0x04, FBDL)
             }
 
             Store (One, INDX)
@@ -717,12 +707,9 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
 
                         Store (Divide (UULN, 0x02, ), CBDL)
                     }
-                    Else
+                    ElseIf (LNotEqual (P0UB, Zero))
                     {
-                        If (LNotEqual (P0UB, Zero))
-                        {
-                            Store (P0UB, CBDL)
-                        }
+                        Store (P0UB, CBDL)
                     }
 
                     Store (GMXB (), MBDL)
@@ -1234,18 +1221,15 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
                         Store (\_SB.PCI0.PEG0.PEGP.LVL0, Local0)
                         ShiftRight (Local0, Arg0, Local0)
                     }
+                    ElseIf (LLess (Arg0, 0x40))
+                    {
+                        Store (\_SB.PCI0.PEG0.PEGP.LVL1, Local0)
+                        ShiftRight (Local0, Subtract (Arg0, 0x20), Local0)
+                    }
                     Else
                     {
-                        If (LLess (Arg0, 0x40))
-                        {
-                            Store (\_SB.PCI0.PEG0.PEGP.LVL1, Local0)
-                            ShiftRight (Local0, Subtract (Arg0, 0x20), Local0)
-                        }
-                        Else
-                        {
-                            Store (\_SB.PCI0.PEG0.PEGP.LVL2, Local0)
-                            ShiftRight (Local0, Subtract (Arg0, 0x40), Local0)
-                        }
+                        Store (\_SB.PCI0.PEG0.PEGP.LVL2, Local0)
+                        ShiftRight (Local0, Subtract (Arg0, 0x40), Local0)
                     }
 
                     If (LEqual (Local1, Zero))
@@ -1285,22 +1269,19 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
                         And (\_SB.PCI0.PEG0.PEGP.LVL0, Not (Local1), Local2)
                         Or (Local2, Local0, \_SB.PCI0.PEG0.PEGP.LVL0)
                     }
+                    ElseIf (LLess (Arg0, 0x40))
+                    {
+                        ShiftLeft (Local3, Subtract (Arg0, 0x20), Local0)
+                        ShiftLeft (One, Subtract (Arg0, 0x20), Local1)
+                        And (\_SB.PCI0.PEG0.PEGP.LVL1, Not (Local1), Local2)
+                        Or (Local2, Local0, \_SB.PCI0.PEG0.PEGP.LVL1)
+                    }
                     Else
                     {
-                        If (LLess (Arg0, 0x40))
-                        {
-                            ShiftLeft (Local3, Subtract (Arg0, 0x20), Local0)
-                            ShiftLeft (One, Subtract (Arg0, 0x20), Local1)
-                            And (\_SB.PCI0.PEG0.PEGP.LVL1, Not (Local1), Local2)
-                            Or (Local2, Local0, \_SB.PCI0.PEG0.PEGP.LVL1)
-                        }
-                        Else
-                        {
-                            ShiftLeft (Local3, Subtract (Arg0, 0x40), Local0)
-                            ShiftLeft (One, Subtract (Arg0, 0x40), Local1)
-                            And (\_SB.PCI0.PEG0.PEGP.LVL2, Not (Local1), Local2)
-                            Or (Local2, Local0, \_SB.PCI0.PEG0.PEGP.LVL2)
-                        }
+                        ShiftLeft (Local3, Subtract (Arg0, 0x40), Local0)
+                        ShiftLeft (One, Subtract (Arg0, 0x40), Local1)
+                        And (\_SB.PCI0.PEG0.PEGP.LVL2, Not (Local1), Local2)
+                        Or (Local2, Local0, \_SB.PCI0.PEG0.PEGP.LVL2)
                     }
 
                     Return (One)
@@ -1324,14 +1305,11 @@ DefinitionBlock ("SSDT-5.aml", "SSDT", 1, "SgRef", "SgPeg", 0x00001000)
                     Return (Zero)
                 }
             }
-            Else
+            ElseIf (LEqual (Arg0, One))
             {
-                If (LEqual (Arg0, One))
+                If (LEqual (ONOF, One))
                 {
-                    If (LEqual (ONOF, One))
-                    {
-                        Return (Zero)
-                    }
+                    Return (Zero)
                 }
             }
 

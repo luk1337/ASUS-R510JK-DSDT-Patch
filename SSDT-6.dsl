@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-6.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of SSDT-6.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -18,23 +18,23 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20120711 (538052369)
  */
-DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
+DefinitionBlock ("", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
 {
 
     External (_PR_.CPU0, ProcessorObj)
     External (_PR_.CPU0._PSS, PkgObj)
-    External (_PR_.CPU0._PTC, UnknownObj)
-    External (_PR_.CPU0._TSS, IntObj)
+    External (_PR_.CPU0._PTC, UnknownObj) // Warning: unresolved
+    External (_PR_.CPU0._TSS, IntObj) // Warning: unresolved
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.GFX0, DeviceObj)
-    External (_SB_.PCI0.GFX0._DSM, IntObj)
+    External (_SB_.PCI0.GFX0._DSM, IntObj) // Warning: unresolved
     External (_SB_.PCI0.GFX0.LCDD, UnknownObj)
-    External (_SB_.PCI0.LPCB.EC0_.SPIN, MethodObj)    // 2 Arguments
-    External (_SB_.PCI0.LPCB.H_EC.GTVR, IntObj)
+    External (_SB_.PCI0.LPCB.EC0_.SPIN, MethodObj)
+    External (_SB_.PCI0.LPCB.H_EC.GTVR, IntObj) // Warning: unresolved
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
-    External (_SB_.PCI0.PEG0.PEGP.SGOF, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGON, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG0.PEGP.SGOF, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.SGON, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.SGST, MethodObj)
     External (DID1, FieldUnitObj)
     External (DID2, FieldUnitObj)
     External (DID3, FieldUnitObj)
@@ -193,29 +193,20 @@ DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
             {
                 Store (RBF1, ROM1)
             }
-            Else
+            ElseIf (LLess (Local0, 0x00010000))
             {
-                If (LLess (Local0, 0x00010000))
-                {
-                    Subtract (Local0, 0x8000, Local0)
-                    Store (RBF2, ROM1)
-                }
-                Else
-                {
-                    If (LLess (Local0, 0x00018000))
-                    {
-                        Subtract (Local0, 0x00010000, Local0)
-                        Store (RBF3, ROM1)
-                    }
-                    Else
-                    {
-                        If (LLess (Local0, 0x00020000))
-                        {
-                            Subtract (Local0, 0x00018000, Local0)
-                            Store (RBF4, ROM1)
-                        }
-                    }
-                }
+                Subtract (Local0, 0x8000, Local0)
+                Store (RBF2, ROM1)
+            }
+            ElseIf (LLess (Local0, 0x00018000))
+            {
+                Subtract (Local0, 0x00010000, Local0)
+                Store (RBF3, ROM1)
+            }
+            ElseIf (LLess (Local0, 0x00020000))
+            {
+                Subtract (Local0, 0x00018000, Local0)
+                Store (RBF4, ROM1)
             }
 
             Multiply (Local0, 0x08, Local2)
@@ -441,93 +432,57 @@ DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
                 {
                     Return (One)
                 }
+                ElseIf (LEqual (_T_0, 0x02))
+                {
+                    Return (0x02)
+                }
+                ElseIf (LEqual (_T_0, 0x04))
+                {
+                    Return (0x03)
+                }
+                ElseIf (LEqual (_T_0, 0x08))
+                {
+                    Return (0x04)
+                }
+                ElseIf (LEqual (_T_0, 0x10))
+                {
+                    Return (0x05)
+                }
+                ElseIf (LEqual (_T_0, 0x20))
+                {
+                    Return (0x06)
+                }
+                ElseIf (LEqual (_T_0, 0x40))
+                {
+                    Return (0x07)
+                }
+                ElseIf (LEqual (_T_0, 0x03))
+                {
+                    Return (0x08)
+                }
+                ElseIf (LEqual (_T_0, 0x06))
+                {
+                    Return (0x09)
+                }
+                ElseIf (LEqual (_T_0, 0x0A))
+                {
+                    Return (0x0A)
+                }
+                ElseIf (LEqual (_T_0, 0x12))
+                {
+                    Return (0x0B)
+                }
+                ElseIf (LEqual (_T_0, 0x22))
+                {
+                    Return (0x0C)
+                }
+                ElseIf (LEqual (_T_0, 0x42))
+                {
+                    Return (0x0D)
+                }
                 Else
                 {
-                    If (LEqual (_T_0, 0x02))
-                    {
-                        Return (0x02)
-                    }
-                    Else
-                    {
-                        If (LEqual (_T_0, 0x04))
-                        {
-                            Return (0x03)
-                        }
-                        Else
-                        {
-                            If (LEqual (_T_0, 0x08))
-                            {
-                                Return (0x04)
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x10))
-                                {
-                                    Return (0x05)
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0x20))
-                                    {
-                                        Return (0x06)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x40))
-                                        {
-                                            Return (0x07)
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0x03))
-                                            {
-                                                Return (0x08)
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0x06))
-                                                {
-                                                    Return (0x09)
-                                                }
-                                                Else
-                                                {
-                                                    If (LEqual (_T_0, 0x0A))
-                                                    {
-                                                        Return (0x0A)
-                                                    }
-                                                    Else
-                                                    {
-                                                        If (LEqual (_T_0, 0x12))
-                                                        {
-                                                            Return (0x0B)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (_T_0, 0x22))
-                                                            {
-                                                                Return (0x0C)
-                                                            }
-                                                            Else
-                                                            {
-                                                                If (LEqual (_T_0, 0x42))
-                                                                {
-                                                                    Return (0x0D)
-                                                                }
-                                                                Else
-                                                                {
-                                                                    Return (One)
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    Return (One)
                 }
 
                 Break
@@ -559,12 +514,9 @@ DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
                         Return (0x80000002)
                     }
                 }
-                Else
+                ElseIf (LNotEqual (Arg1, 0x0102))
                 {
-                    If (LNotEqual (Arg1, 0x0102))
-                    {
-                        Return (0x80000002)
-                    }
+                    Return (0x80000002)
                 }
 
                 If (LEqual (Arg2, Zero))
@@ -576,25 +528,19 @@ DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
                              0x7F, 0x00, 0x04, 0x00                         
                         })
                     }
-                    Else
+                    ElseIf (NBCI)
                     {
-                        If (NBCI)
+                        Return (Buffer (0x04)
                         {
-                            Return (Buffer (0x04)
-                            {
-                                 0x73, 0x00, 0x04, 0x00                         
-                            })
-                        }
-                        Else
+                             0x73, 0x00, 0x04, 0x00                         
+                        })
+                    }
+                    ElseIf (OPCI)
+                    {
+                        Return (Buffer (0x04)
                         {
-                            If (OPCI)
-                            {
-                                Return (Buffer (0x04)
-                                {
-                                     0x61, 0x18, 0x03, 0x0C                         
-                                })
-                            }
-                        }
+                             0x61, 0x18, 0x03, 0x0C                         
+                        })
                     }
                 }
 
@@ -976,142 +922,112 @@ DefinitionBlock ("SSDT-6.aml", "SSDT", 1, "OptRef", "OptTabl", 0x00001000)
 
                     Return (Local0)
                 }
-                Else
+                ElseIf (LEqual (_T_0, 0x13))
                 {
-                    If (LEqual (_T_0, 0x13))
+                    Store ("GPS fun 19", Debug)
+                    Return (Arg3)
+                }
+                ElseIf (LEqual (_T_0, 0x20))
+                {
+                    Store ("GPS fun 20", Debug)
+                    Name (RET1, Zero)
+                    CreateBitField (Arg3, 0x18, NRIT)
+                    CreateBitField (Arg3, 0x19, NRIS)
+                    If (NRIS)
                     {
-                        Store ("GPS fun 19", Debug)
-                        Return (Arg3)
-                    }
-                    Else
-                    {
-                        If (LEqual (_T_0, 0x20))
+                        If (NRIT)
                         {
-                            Store ("GPS fun 20", Debug)
-                            Name (RET1, Zero)
-                            CreateBitField (Arg3, 0x18, NRIT)
-                            CreateBitField (Arg3, 0x19, NRIS)
-                            If (NRIS)
-                            {
-                                If (NRIT)
-                                {
-                                    Or (RET1, 0x01000000, RET1)
-                                }
-                                Else
-                                {
-                                    And (RET1, 0xFEFFFFFF, RET1)
-                                }
-                            }
-
-                            Or (RET1, 0x40000000, RET1)
-                            If (NLIM)
-                            {
-                                Or (RET1, One, RET1)
-                            }
-
-                            Return (RET1)
+                            Or (RET1, 0x01000000, RET1)
                         }
                         Else
                         {
-                            If (LEqual (_T_0, 0x21))
-                            {
-                                Return (\_PR.CPU0._PSS)
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x22))
-                                {
-                                    CreateByteField (Arg3, Zero, PCAP)
-                                    Store (PCAP, PSAP)
-                                    Return (PCAP)
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0x23))
-                                    {
-                                        Return (PSAP)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x25))
-                                        {
-                                            Store ("GPS fun 25", Debug)
-                                            Return (\_PR.CPU0._TSS)
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0x26))
-                                            {
-                                                Store ("GPS fun 26", Debug)
-                                                CreateDWordField (Arg3, Zero, TCAP)
-                                                Store (TCAP, \_PR.CPU0._PTC)
-                                                Notify (\_PR.CPU0, 0x80)
-                                                Return (TCAP)
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0x2A))
-                                                {
-                                                    Store ("GPS fun 2a", Debug)
-                                                    CreateByteField (Arg3, Zero, PSH0)
-                                                    CreateByteField (Arg3, One, PSH1)
-                                                    CreateBitField (Arg3, 0x08, GPUT)
-                                                    CreateBitField (Arg3, 0x09, CPUT)
-                                                    CreateBitField (Arg3, 0x0A, FANS)
-                                                    CreateBitField (Arg3, 0x0B, SKIN)
-                                                    CreateBitField (Arg3, 0x0C, ENGR)
-                                                    CreateBitField (Arg3, 0x0D, SEN1)
-                                                    CreateBitField (Arg3, 0x0E, SEN2)
-                                                    While (One)
-                                                    {
-                                                        Store (PSH0, _T_1)
-                                                        If (LEqual (_T_1, Zero))
-                                                        {
-                                                            If (CPUT)
-                                                            {
-                                                                Store (0x0200, RETN)
-                                                                Or (RETN, PSH0, RETN)
-                                                                Store (\_SB.PCI0.LPCB.H_EC.GTVR, PDTS)
-                                                            }
-
-                                                            Return (GPSP)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (_T_1, One))
-                                                            {
-                                                                Store (0x0300, RETN)
-                                                                Or (RETN, PSH0, RETN)
-                                                                Store (0x03E8, PDTS)
-                                                                Return (GPSP)
-                                                            }
-                                                            Else
-                                                            {
-                                                                If (LEqual (_T_1, 0x02))
-                                                                {
-                                                                    Store (0x0102, RETN)
-                                                                    Store (Zero, VRV1)
-                                                                    Store (0x50, TGPU)
-                                                                    Store (Zero, PDTS)
-                                                                    Store (Zero, SFAN)
-                                                                    Store (Zero, CPUE)
-                                                                    Store (Zero, SKNT)
-                                                                    Store (Zero, TMP1)
-                                                                    Store (Zero, TMP2)
-                                                                    Return (GPSP)
-                                                                }
-                                                            }
-                                                        }
-
-                                                        Break
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            And (RET1, 0xFEFFFFFF, RET1)
                         }
+                    }
+
+                    Or (RET1, 0x40000000, RET1)
+                    If (NLIM)
+                    {
+                        Or (RET1, One, RET1)
+                    }
+
+                    Return (RET1)
+                }
+                ElseIf (LEqual (_T_0, 0x21))
+                {
+                    Return (\_PR.CPU0._PSS)
+                }
+                ElseIf (LEqual (_T_0, 0x22))
+                {
+                    CreateByteField (Arg3, Zero, PCAP)
+                    Store (PCAP, PSAP)
+                    Return (PCAP)
+                }
+                ElseIf (LEqual (_T_0, 0x23))
+                {
+                    Return (PSAP)
+                }
+                ElseIf (LEqual (_T_0, 0x25))
+                {
+                    Store ("GPS fun 25", Debug)
+                    Return (\_PR.CPU0._TSS)
+                }
+                ElseIf (LEqual (_T_0, 0x26))
+                {
+                    Store ("GPS fun 26", Debug)
+                    CreateDWordField (Arg3, Zero, TCAP)
+                    Store (TCAP, \_PR.CPU0._PTC)
+                    Notify (\_PR.CPU0, 0x80)
+                    Return (TCAP)
+                }
+                ElseIf (LEqual (_T_0, 0x2A))
+                {
+                    Store ("GPS fun 2a", Debug)
+                    CreateByteField (Arg3, Zero, PSH0)
+                    CreateByteField (Arg3, One, PSH1)
+                    CreateBitField (Arg3, 0x08, GPUT)
+                    CreateBitField (Arg3, 0x09, CPUT)
+                    CreateBitField (Arg3, 0x0A, FANS)
+                    CreateBitField (Arg3, 0x0B, SKIN)
+                    CreateBitField (Arg3, 0x0C, ENGR)
+                    CreateBitField (Arg3, 0x0D, SEN1)
+                    CreateBitField (Arg3, 0x0E, SEN2)
+                    While (One)
+                    {
+                        Store (PSH0, _T_1)
+                        If (LEqual (_T_1, Zero))
+                        {
+                            If (CPUT)
+                            {
+                                Store (0x0200, RETN)
+                                Or (RETN, PSH0, RETN)
+                                Store (\_SB.PCI0.LPCB.H_EC.GTVR, PDTS)
+                            }
+
+                            Return (GPSP)
+                        }
+                        ElseIf (LEqual (_T_1, One))
+                        {
+                            Store (0x0300, RETN)
+                            Or (RETN, PSH0, RETN)
+                            Store (0x03E8, PDTS)
+                            Return (GPSP)
+                        }
+                        ElseIf (LEqual (_T_1, 0x02))
+                        {
+                            Store (0x0102, RETN)
+                            Store (Zero, VRV1)
+                            Store (0x50, TGPU)
+                            Store (Zero, PDTS)
+                            Store (Zero, SFAN)
+                            Store (Zero, CPUE)
+                            Store (Zero, SKNT)
+                            Store (Zero, TMP1)
+                            Store (Zero, TMP2)
+                            Return (GPSP)
+                        }
+
+                        Break
                     }
                 }
 

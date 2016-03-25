@@ -1,24 +1,24 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of DSDT.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00014480 (83072)
+ *     Length           0x00014725 (83749)
  *     Revision         0x02
- *     Checksum         0x4E
+ *     Checksum         0x7A
  *     OEM ID           "Apple "
  *     OEM Table ID     "Notebook"
  *     OEM Revision     0x00000012 (18)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20100331 (537920305)
  */
-DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
+DefinitionBlock ("", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 {
     /*
      * iASL Warning: There were 29 external control methods found during
@@ -26,9 +26,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
      * ACPI tables may be required to properly disassemble the code. This
      * resulting disassembler output file may not compile because the
      * disassembler did not know how many arguments to assign to the
-     * unresolved methods.
+     * unresolved methods. Note: SSDTs can be dynamically loaded at
+     * runtime and may or may not be available via the host OS.
      *
-     * If necessary, the -fe option can be used to specify a file containing
+     * In addition, the -fe option can be used to specify a file containing
      * control method external declarations with the associated method
      * argument counts. Each line of the file must be of the form:
      *     External (<method pathname>, MethodObj, <argument count>)
@@ -48,54 +49,54 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
     External (_PR_.CPU0._PPC, IntObj)
     External (_PR_.CPU0._PSS, PkgObj)
-    External (_SB_.IAOE.ECTM, UnknownObj)
-    External (_SB_.IAOE.FFSE, UnknownObj)
-    External (_SB_.IAOE.IBT1, UnknownObj)
-    External (_SB_.IAOE.ITMR, UnknownObj)
-    External (_SB_.IAOE.PTSL, UnknownObj)
-    External (_SB_.IAOE.RCTM, UnknownObj)
-    External (_SB_.IAOE.WKRS, UnknownObj)
-    External (_SB_.IFFS.FFSS, UnknownObj)
-    External (_SB_.PCCD, UnknownObj)
-    External (_SB_.PCCD.PENB, UnknownObj)
+    External (_SB_.IAOE.ECTM, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.FFSE, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.IBT1, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.ITMR, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.PTSL, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.RCTM, UnknownObj) // Warning: unresolved
+    External (_SB_.IAOE.WKRS, UnknownObj) // Warning: unresolved
+    External (_SB_.IFFS.FFSS, UnknownObj) // Warning: unresolved
+    External (_SB_.PCCD, UnknownObj) // Warning: unresolved
+    External (_SB_.PCCD.PENB, UnknownObj) // Warning: unresolved
     External (_SB_.PCI0.B0D3.ABAR, FieldUnitObj)
     External (_SB_.PCI0.B0D3.BARA, IntObj)
-    External (_SB_.PCI0.GFX0.ADVD, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.AINT, MethodObj)    // 2 Arguments
+    External (_SB_.PCI0.GFX0.ADVD, MethodObj)
+    External (_SB_.PCI0.GFX0.AINT, MethodObj)
     External (_SB_.PCI0.GFX0.CBLV, FieldUnitObj)
     External (_SB_.PCI0.GFX0.CLID, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.DWBL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.GCBL, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.GCDS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.GLID, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.GSCI, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.GFX0.DWBL, MethodObj)
+    External (_SB_.PCI0.GFX0.GCBL, MethodObj)
+    External (_SB_.PCI0.GFX0.GCDS, MethodObj)
+    External (_SB_.PCI0.GFX0.GLID, MethodObj)
+    External (_SB_.PCI0.GFX0.GSCI, MethodObj)
     External (_SB_.PCI0.GFX0.GSSE, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.NATK, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.OPTS, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.OWAK, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.PRST, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)
+    External (_SB_.PCI0.GFX0.NATK, MethodObj)
+    External (_SB_.PCI0.GFX0.OPTS, MethodObj)
+    External (_SB_.PCI0.GFX0.OWAK, MethodObj)
+    External (_SB_.PCI0.GFX0.PRST, MethodObj)
     External (_SB_.PCI0.GFX0.STAT, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.SWHD, MethodObj)    // 1 Arguments
+    External (_SB_.PCI0.GFX0.SWHD, MethodObj)
     External (_SB_.PCI0.GFX0.TCHE, FieldUnitObj)
-    External (_SB_.PCI0.GFX0.UPBL, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.GFX0.UPBL, MethodObj)
     External (_SB_.PCI0.PEG0, UnknownObj)
-    External (_SB_.PCI0.PEG0.HPME, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG0.HPME, MethodObj)
     External (_SB_.PCI0.PEG0.PEGP, UnknownObj)
-    External (_SB_.PCI0.PEG0.PEGP.DWBL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.EPON, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.NATK, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.PRST, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.UPBL, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG0.PEGP.DWBL, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.EPON, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.LCDD._DCS, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.NATK, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.PRST, MethodObj)
+    External (_SB_.PCI0.PEG0.PEGP.UPBL, MethodObj)
     External (_SB_.PCI0.PEG1, UnknownObj)
-    External (_SB_.PCI0.PEG1.HPME, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG1.HPME, MethodObj)
     External (_SB_.PCI0.PEG2, UnknownObj)
-    External (_SB_.PCI0.PEG2.HPME, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.PEG2.HPME, MethodObj)
     External (GSMI, FieldUnitObj)
     External (LIDS, FieldUnitObj)
-    External (MDBG, IntObj)
-    External (PCCD, UnknownObj)
+    External (MDBG, IntObj) // Warning: unresolved
+    External (PCCD, UnknownObj) // Warning: unresolved
     External (PDC0, IntObj)
     External (PDC1, IntObj)
     External (PDC2, IntObj)
@@ -191,7 +192,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
     Name (TOPM, Zero)
     Name (ROMS, 0xFFE00000)
     Name (VGAF, One)
-    OperationRegion (GNVS, SystemMemory, 0xCAB12C18, 0x02B2)
+    OperationRegion (GNVS, SystemMemory, 0xAEB12C18, 0x02B2)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16, 
@@ -1904,15 +1905,12 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Return (^XHC.POSC (Arg1, Arg2, Arg3))
                 }
-                Else
+                ElseIf (LGreaterEqual (MSOS (), OSW8))
                 {
-                    If (LGreaterEqual (MSOS (), OSW8))
+                    If (LEqual (XCNT, Zero))
                     {
-                        If (LEqual (XCNT, Zero))
-                        {
-                            ^XHC.XSEL ()
-                            Increment (XCNT)
-                        }
+                        ^XHC.XSEL ()
+                        Increment (XCNT)
                     }
                 }
 
@@ -2194,66 +2192,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -2457,66 +2446,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -2720,66 +2700,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -2983,66 +2954,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -3236,66 +3198,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -3489,66 +3442,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -4126,6 +4070,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 {
     IRQNoFlags() { 0, 8, 11, 15 }
 
+                        
                         Memory32Fixed (ReadWrite,
                             0xFED00000,         // Address Base
                             0x00000400,         // Address Length
@@ -4141,12 +4086,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                 Return (0x0F)
                             }
                         }
-                        Else
+                        ElseIf (HPAE)
                         {
-                            If (HPAE)
-                            {
-                                Return (0x0B)
-                            }
+                            Return (0x0B)
                         }
 
                         Return (Zero)
@@ -4284,7 +4226,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x01,               // Alignment
                             0x02,               // Length
                             )
-                        
                     })
                 }
 
@@ -4475,7 +4416,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x01,               // Alignment
                             0x08,               // Length
                             )
-                        
                     })
                 }
 
@@ -4496,7 +4436,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             0x10,               // Alignment
                             0x04,               // Length
                             )
-                        
                     })
                 }
 
@@ -4992,23 +4931,17 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             {
                                 DBGQ (Arg0)
                             }
+                            ElseIf (LGreater (Arg0, 0xFFFF))
+                            {
+                                DBGD (Arg0)
+                            }
+                            ElseIf (LGreater (Arg0, 0xFF))
+                            {
+                                DBGW (Arg0)
+                            }
                             Else
                             {
-                                If (LGreater (Arg0, 0xFFFF))
-                                {
-                                    DBGD (Arg0)
-                                }
-                                Else
-                                {
-                                    If (LGreater (Arg0, 0xFF))
-                                    {
-                                        DBGW (Arg0)
-                                    }
-                                    Else
-                                    {
-                                        DBGB (Arg0)
-                                    }
-                                }
+                                DBGB (Arg0)
                             }
 
                             Return (Zero)
@@ -5358,66 +5291,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -5663,66 +5587,57 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                Else
+                                ElseIf (LEqual (_T_1, 0x04))
                                 {
-                                    If (LEqual (_T_1, 0x04))
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (Arg1, 0x02))
+                                        If (OBFF)
                                         {
-                                            If (OBFF)
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
-                                            Else
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00 
+                                            })
+                                        }
+                                        Else
+                                        {
+                                            Return (Buffer (0x10)
                                             {
-                                                Return (Buffer (0x10)
-                                                {
-                                                    /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                                    /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                                                })
-                                            }
+                                                /* 0000 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                                /* 0008 */  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
+                                            })
                                         }
                                     }
-                                    Else
+                                }
+                                ElseIf (LEqual (_T_1, 0x06))
+                                {
+                                    If (LEqual (Arg1, 0x02))
                                     {
-                                        If (LEqual (_T_1, 0x06))
+                                        If (LTRE)
                                         {
-                                            If (LEqual (Arg1, 0x02))
+                                            If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
                                             {
-                                                If (LTRE)
+                                                If (LEqual (PCHS, One))
                                                 {
-                                                    If (LOr (LEqual (LMSL, 0xFFFFFFFF), LEqual (LNSL, 0xFFFFFFFF)))
-                                                    {
-                                                        If (LEqual (PCHS, One))
-                                                        {
-                                                            Store (0x0846, LMSL)
-                                                            Store (0x0846, LNSL)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (PCHS, 0x02))
-                                                            {
-                                                                Store (0x1003, LMSL)
-                                                                Store (0x1003, LNSL)
-                                                            }
-                                                        }
-                                                    }
-
-                                                    Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
-                                                    Store (And (LMSL, 0x03FF), Index (LTRV, One))
-                                                    Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
-                                                    Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
-                                                    Return (LTRV)
+                                                    Store (0x0846, LMSL)
+                                                    Store (0x0846, LNSL)
                                                 }
-                                                Else
+                                                ElseIf (LEqual (PCHS, 0x02))
                                                 {
-                                                    Return (Zero)
+                                                    Store (0x1003, LMSL)
+                                                    Store (0x1003, LNSL)
                                                 }
                                             }
+
+                                            Store (And (ShiftRight (LMSL, 0x0A), 0x07), Index (LTRV, Zero))
+                                            Store (And (LMSL, 0x03FF), Index (LTRV, One))
+                                            Store (And (ShiftRight (LNSL, 0x0A), 0x07), Index (LTRV, 0x02))
+                                            Store (And (LNSL, 0x03FF), Index (LTRV, 0x03))
+                                            Return (LTRV)
+                                        }
+                                        Else
+                                        {
+                                            Return (Zero)
                                         }
                                     }
                                 }
@@ -6128,16 +6043,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Subtract (Arg0, 0x28, Local1)
                 }
+                ElseIf (LLessEqual (Arg0, 0x0A))
+                {
+                    Subtract (Arg0, 0x08, Local1)
+                }
                 Else
                 {
-                    If (LLessEqual (Arg0, 0x0A))
-                    {
-                        Subtract (Arg0, 0x08, Local1)
-                    }
-                    Else
-                    {
-                        Subtract (Arg0, 0x0A, Local1)
-                    }
+                    Subtract (Arg0, 0x0A, Local1)
                 }
 
                 Store (ShiftLeft (One, Local1), Local2)
@@ -6167,16 +6079,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Subtract (Arg0, 0x28, Local1)
                 }
+                ElseIf (LLessEqual (Arg0, 0x0A))
+                {
+                    Subtract (Arg0, 0x08, Local1)
+                }
                 Else
                 {
-                    If (LLessEqual (Arg0, 0x0A))
-                    {
-                        Subtract (Arg0, 0x08, Local1)
-                    }
-                    Else
-                    {
-                        Subtract (Arg0, 0x0A, Local1)
-                    }
+                    Subtract (Arg0, 0x0A, Local1)
                 }
 
                 Store (ShiftLeft (One, Local1), Local2)
@@ -6413,26 +6322,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -6497,26 +6400,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -6581,26 +6478,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -6665,26 +6556,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -6725,6 +6610,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     }
                 }
             }
+
+            
+            
             Name(_PRW, Package() { 0x0D, 0 })
             Method (_DSM, 4, NotSerialized)
             {
@@ -6740,8 +6628,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     "AAPL,max-port-current-in-sleep", 2100,
                 })
             }
-
-            
         }
 
         Device (EHC2)
@@ -6905,26 +6791,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -6995,26 +6875,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    Else
+                                    ElseIf (LEqual (_T_0, One))
                                     {
-                                        If (LEqual (_T_0, One))
+                                        If (LEqual (SDGV, 0xFF))
                                         {
-                                            If (LEqual (SDGV, 0xFF))
-                                            {
-                                                Return (Zero)
-                                            }
-                                            Else
-                                            {
-                                                Return (One)
-                                            }
+                                            Return (Zero)
                                         }
                                         Else
                                         {
-                                            If (LEqual (_T_0, 0x02))
-                                            {
-                                                Return (SDGV)
-                                            }
+                                            Return (One)
                                         }
+                                    }
+                                    ElseIf (LEqual (_T_0, 0x02))
+                                    {
+                                        Return (SDGV)
                                     }
 
                                     Break
@@ -7113,6 +6987,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     }
                 }
             }
+
+            
+            
             Name(_PRW, Package() { 0x0D, 0 })
             Method (_DSM, 4, NotSerialized)
             {
@@ -7128,8 +7005,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     "AAPL,max-port-current-in-sleep", 2100,
                 })
             }
-
-            
         }
 
         Device (XHC)
@@ -7194,103 +7069,61 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         {
                             Return (One)
                         }
-                        Else
+                        ElseIf (LEqual (_T_0, 0x02))
                         {
-                            If (LEqual (_T_0, 0x02))
-                            {
-                                Return (0x02)
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x03))
-                                {
-                                    Return (0x04)
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0x04))
-                                    {
-                                        Return (0x08)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x05))
-                                        {
-                                            Return (0x0100)
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0x06))
-                                            {
-                                                Return (0x0200)
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0x07))
-                                                {
-                                                    Return (0x0400)
-                                                }
-                                                Else
-                                                {
-                                                    If (LEqual (_T_0, 0x08))
-                                                    {
-                                                        Return (0x0800)
-                                                    }
-                                                    Else
-                                                    {
-                                                        If (LEqual (_T_0, 0x09))
-                                                        {
-                                                            Return (0x10)
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (_T_0, 0x0A))
-                                                            {
-                                                                Return (0x20)
-                                                            }
-                                                            Else
-                                                            {
-                                                                If (LEqual (_T_0, 0x0B))
-                                                                {
-                                                                    Return (0x1000)
-                                                                }
-                                                                Else
-                                                                {
-                                                                    If (LEqual (_T_0, 0x0C))
-                                                                    {
-                                                                        Return (0x2000)
-                                                                    }
-                                                                    Else
-                                                                    {
-                                                                        If (LEqual (_T_0, 0x0D))
-                                                                        {
-                                                                            Return (0x40)
-                                                                        }
-                                                                        Else
-                                                                        {
-                                                                            If (LEqual (_T_0, 0x0E))
-                                                                            {
-                                                                                Return (0x80)
-                                                                            }
-                                                                            Else
-                                                                            {
-                                                                                If (LEqual (_T_0, 0x0F))
-                                                                                {
-                                                                                    Return (0x4000)
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            Return (0x02)
+                        }
+                        ElseIf (LEqual (_T_0, 0x03))
+                        {
+                            Return (0x04)
+                        }
+                        ElseIf (LEqual (_T_0, 0x04))
+                        {
+                            Return (0x08)
+                        }
+                        ElseIf (LEqual (_T_0, 0x05))
+                        {
+                            Return (0x0100)
+                        }
+                        ElseIf (LEqual (_T_0, 0x06))
+                        {
+                            Return (0x0200)
+                        }
+                        ElseIf (LEqual (_T_0, 0x07))
+                        {
+                            Return (0x0400)
+                        }
+                        ElseIf (LEqual (_T_0, 0x08))
+                        {
+                            Return (0x0800)
+                        }
+                        ElseIf (LEqual (_T_0, 0x09))
+                        {
+                            Return (0x10)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0A))
+                        {
+                            Return (0x20)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0B))
+                        {
+                            Return (0x1000)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0C))
+                        {
+                            Return (0x2000)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0D))
+                        {
+                            Return (0x40)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0E))
+                        {
+                            Return (0x80)
+                        }
+                        ElseIf (LEqual (_T_0, 0x0F))
+                        {
+                            Return (0x4000)
                         }
 
                         Break
@@ -7305,61 +7138,37 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         {
                             Return (One)
                         }
-                        Else
+                        ElseIf (LEqual (_T_1, 0x02))
                         {
-                            If (LEqual (_T_1, 0x02))
-                            {
-                                Return (0x02)
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_1, 0x03))
-                                {
-                                    Return (0x04)
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_1, 0x04))
-                                    {
-                                        Return (0x08)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_1, 0x05))
-                                        {
-                                            Return (0x10)
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_1, 0x06))
-                                            {
-                                                Return (0x20)
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_1, 0x07))
-                                                {
-                                                    Return (0x40)
-                                                }
-                                                Else
-                                                {
-                                                    If (LEqual (_T_1, 0x08))
-                                                    {
-                                                        Return (0x80)
-                                                    }
-                                                    Else
-                                                    {
-                                                        If (LEqual (_T_1, 0x09))
-                                                        {
-                                                            Return (0x0100)
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            Return (0x02)
+                        }
+                        ElseIf (LEqual (_T_1, 0x03))
+                        {
+                            Return (0x04)
+                        }
+                        ElseIf (LEqual (_T_1, 0x04))
+                        {
+                            Return (0x08)
+                        }
+                        ElseIf (LEqual (_T_1, 0x05))
+                        {
+                            Return (0x10)
+                        }
+                        ElseIf (LEqual (_T_1, 0x06))
+                        {
+                            Return (0x20)
+                        }
+                        ElseIf (LEqual (_T_1, 0x07))
+                        {
+                            Return (0x40)
+                        }
+                        ElseIf (LEqual (_T_1, 0x08))
+                        {
+                            Return (0x80)
+                        }
+                        ElseIf (LEqual (_T_1, 0x09))
+                        {
+                            Return (0x0100)
                         }
 
                         Break
@@ -7417,9 +7226,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 Store (One, CLK2)
                 If (LEqual (PCHS, 0x02))
                 {
-                    While (LOr (LOr (LEqual (And (PSC1, 0x03F8), 0x02E0), LEqual (And (PSC2, 
-                        0x03F8), 0x02E0)), LOr (LEqual (And (PSC3, 0x03F8), 0x02E0), LEqual (And (PSC4, 
-                        0x03F8), 0x02E0))))
+                    While (LOr (LOr (LEqual (And (PSC1, 0x03F8), 0x02E0), LEqual (And (PSC2, 0x03F8), 0x02E0)), LOr (LEqual (And (PSC3, 0x03F8), 0x02E0), LEqual (And (PSC4, 0x03F8), 0x02E0))))
                     {
                         Stall (0x0A)
                     }
@@ -7585,30 +7392,24 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     {
                         ESEL ()
                     }
-                    Else
+                    ElseIf (LEqual (And (CDID, 0xF000), 0x8000))
                     {
-                        If (LEqual (And (CDID, 0xF000), 0x8000))
+                        If (LGreater (Arg0, One))
                         {
-                            If (LGreater (Arg0, One))
-                            {
-                                XSEL ()
-                            }
-                            Else
-                            {
-                                Or (CDW1, 0x0A, CDW1)
-                            }
+                            XSEL ()
                         }
                         Else
                         {
-                            If (LGreater (Arg0, 0x02))
-                            {
-                                XSEL ()
-                            }
-                            Else
-                            {
-                                Or (CDW1, 0x0A, CDW1)
-                            }
+                            Or (CDW1, 0x0A, CDW1)
                         }
+                    }
+                    ElseIf (LGreater (Arg0, 0x02))
+                    {
+                        XSEL ()
+                    }
+                    Else
+                    {
+                        Or (CDW1, 0x0A, CDW1)
                     }
                 }
 
@@ -8861,6 +8662,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     }
                 }
             }
+
+            
+            
             Name(_PRW, Package() { 0x0D, 0 })
             Method (_DSM, 4, NotSerialized)
             {
@@ -8876,8 +8680,6 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     "AAPL,max-port-current-in-sleep", 2100,
                 })
             }
-
-            
         }
 
         Device (HDEF)
@@ -8898,32 +8700,30 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 PMES,   1
             }
 
-            
-
-            Method (_DSM, 4, NotSerialized)
+            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                Store (Package (0x0c)
-                {                        
-                    "built-in", 
-                    Buffer (One)
+                Store (Package (0x0C)
                     {
-                        0x00
-                    }, 
-                    "layout-id", 
-                    Buffer (0x04)
-                    {
-                        0x03, 0x00, 0x00, 0x00
-                    }, 
-                   "PinConfigurations", 
-                   Buffer (0x00)
-                   {
-                       0x00
-                   }
-                }, Local0)
+                        "built-in", 
+                        Buffer (One)
+                        {
+                             0x00                                           
+                        }, 
+
+                        "layout-id", 
+                        Unicode ("\x03"), 
+                        "PinConfigurations", 
+                        Buffer (One)
+                        {
+                             0x00                                           
+                        }
+                    }, Local0)
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
             }
             Name(_PRW, Package() { 0x0D, 0 })
+
+            
         }
 
         Scope (RP01)
@@ -9018,8 +8818,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
                 Method (_GTF, 0, Serialized)  // _GTF: Get Task File
                 {
-                    If (LAnd (LAnd (LEqual (DVS0, One), LEqual (And (FDEV, One), One)), 
-                        LEqual (And (FDRP, 0x80), 0x80)))
+                    If (LAnd (LAnd (LEqual (DVS0, One), LEqual (And (FDEV, One), One)), LEqual (And (FDRP, 0x80), 0x80)))
                     {
                         Name (PIB1, Buffer (0x07)
                         {
@@ -9051,8 +8850,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
                 Method (_GTF, 0, Serialized)  // _GTF: Get Task File
                 {
-                    If (LAnd (LAnd (LEqual (DVS1, One), LEqual (And (FDEV, One), One)), 
-                        LEqual (And (FDRP, 0x80), 0x80)))
+                    If (LAnd (LAnd (LEqual (DVS1, One), LEqual (And (FDEV, One), One)), LEqual (And (FDRP, 0x80), 0x80)))
                     {
                         Name (PIB1, Buffer (0x07)
                         {
@@ -9084,8 +8882,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
                 Method (_GTF, 0, Serialized)  // _GTF: Get Task File
                 {
-                    If (LAnd (LAnd (LEqual (DVS3, One), LEqual (And (FDEV, One), One)), 
-                        LEqual (And (FDRP, 0x80), 0x80)))
+                    If (LAnd (LAnd (LEqual (DVS3, One), LEqual (And (FDEV, One), One)), LEqual (And (FDRP, 0x80), 0x80)))
                     {
                         Name (PIB1, Buffer (0x07)
                         {
@@ -9482,54 +9279,33 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Store (Zero, Local0)
             }
-            Else
+            ElseIf (LEqual (_T_0, 0x02F8))
             {
-                If (LEqual (_T_0, 0x02F8))
-                {
-                    Store (One, Local0)
-                }
-                Else
-                {
-                    If (LEqual (_T_0, 0x0220))
-                    {
-                        Store (0x02, Local0)
-                    }
-                    Else
-                    {
-                        If (LEqual (_T_0, 0x0228))
-                        {
-                            Store (0x03, Local0)
-                        }
-                        Else
-                        {
-                            If (LEqual (_T_0, 0x0238))
-                            {
-                                Store (0x04, Local0)
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x02E8))
-                                {
-                                    Store (0x05, Local0)
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0x0338))
-                                    {
-                                        Store (0x06, Local0)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x03E8))
-                                        {
-                                            Store (0x07, Local0)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                Store (One, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x0220))
+            {
+                Store (0x02, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x0228))
+            {
+                Store (0x03, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x0238))
+            {
+                Store (0x04, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x02E8))
+            {
+                Store (0x05, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x0338))
+            {
+                Store (0x06, Local0)
+            }
+            ElseIf (LEqual (_T_0, 0x03E8))
+            {
+                Store (0x07, Local0)
             }
 
             Break
@@ -9558,217 +9334,190 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     Store (One, CALE)
                 }
             }
-            Else
+            ElseIf (LEqual (_T_0, One))
             {
-                If (LEqual (_T_0, One))
+                Store (Zero, CBLE)
+                Store (UXDV (Arg2), Local0)
+                If (LNotEqual (Local0, 0xFF))
                 {
-                    Store (Zero, CBLE)
-                    Store (UXDV (Arg2), Local0)
-                    If (LNotEqual (Local0, 0xFF))
-                    {
-                        Store (Local0, CBDR)
-                    }
+                    Store (Local0, CBDR)
+                }
 
+                If (Arg1)
+                {
+                    Store (One, CBLE)
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x02))
+            {
+                Store (Zero, LTLE)
+                If (LEqual (Arg2, 0x0378))
+                {
+                    Store (Zero, LTDR)
+                }
+
+                If (LEqual (Arg2, 0x0278))
+                {
+                    Store (One, LTDR)
+                }
+
+                If (LEqual (Arg2, 0x03BC))
+                {
+                    Store (0x02, LTDR)
+                }
+
+                If (Arg1)
+                {
+                    Store (One, LTLE)
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x03))
+            {
+                Store (Zero, FDLE)
+                If (LEqual (Arg2, 0x03F0))
+                {
+                    Store (Zero, FDDR)
+                }
+
+                If (LEqual (Arg2, 0x0370))
+                {
+                    Store (One, FDDR)
+                }
+
+                If (Arg1)
+                {
+                    Store (One, FDLE)
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x08))
+            {
+                If (LEqual (Arg2, 0x0200))
+                {
                     If (Arg1)
                     {
-                        Store (One, CBLE)
-                    }
-                }
-                Else
-                {
-                    If (LEqual (_T_0, 0x02))
-                    {
-                        Store (Zero, LTLE)
-                        If (LEqual (Arg2, 0x0378))
-                        {
-                            Store (Zero, LTDR)
-                        }
-
-                        If (LEqual (Arg2, 0x0278))
-                        {
-                            Store (One, LTDR)
-                        }
-
-                        If (LEqual (Arg2, 0x03BC))
-                        {
-                            Store (0x02, LTDR)
-                        }
-
-                        If (Arg1)
-                        {
-                            Store (One, LTLE)
-                        }
+                        Store (One, GLLE)
                     }
                     Else
                     {
-                        If (LEqual (_T_0, 0x03))
-                        {
-                            Store (Zero, FDLE)
-                            If (LEqual (Arg2, 0x03F0))
-                            {
-                                Store (Zero, FDDR)
-                            }
+                        Store (Zero, GLLE)
+                    }
+                }
 
-                            If (LEqual (Arg2, 0x0370))
-                            {
-                                Store (One, FDDR)
-                            }
+                If (LEqual (Arg2, 0x0208))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, GHLE)
+                    }
+                    Else
+                    {
+                        Store (Zero, GHLE)
+                    }
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x09))
+            {
+                If (LEqual (Arg2, 0x0200))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, GLLE)
+                    }
+                    Else
+                    {
+                        Store (Zero, GLLE)
+                    }
+                }
 
-                            If (Arg1)
-                            {
-                                Store (One, FDLE)
-                            }
-                        }
-                        Else
-                        {
-                            If (LEqual (_T_0, 0x08))
-                            {
-                                If (LEqual (Arg2, 0x0200))
-                                {
-                                    If (Arg1)
-                                    {
-                                        Store (One, GLLE)
-                                    }
-                                    Else
-                                    {
-                                        Store (Zero, GLLE)
-                                    }
-                                }
+                If (LEqual (Arg2, 0x0208))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, GHLE)
+                    }
+                    Else
+                    {
+                        Store (Zero, GHLE)
+                    }
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x0A))
+            {
+                If (LOr (LEqual (Arg2, 0x60), LEqual (Arg2, 0x64)))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, KCLE)
+                    }
+                    Else
+                    {
+                        Store (Zero, KCLE)
+                    }
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x0B))
+            {
+                If (LOr (LEqual (Arg2, 0x62), LEqual (Arg2, 0x66)))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, MCLE)
+                    }
+                    Else
+                    {
+                        Store (Zero, MCLE)
+                    }
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x0C))
+            {
+                If (LEqual (Arg2, 0x2E))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, C1LE)
+                    }
+                    Else
+                    {
+                        Store (Zero, C1LE)
+                    }
+                }
 
-                                If (LEqual (Arg2, 0x0208))
-                                {
-                                    If (Arg1)
-                                    {
-                                        Store (One, GHLE)
-                                    }
-                                    Else
-                                    {
-                                        Store (Zero, GHLE)
-                                    }
-                                }
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x09))
-                                {
-                                    If (LEqual (Arg2, 0x0200))
-                                    {
-                                        If (Arg1)
-                                        {
-                                            Store (One, GLLE)
-                                        }
-                                        Else
-                                        {
-                                            Store (Zero, GLLE)
-                                        }
-                                    }
+                If (LEqual (Arg2, 0x4E))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, C2LE)
+                    }
+                    Else
+                    {
+                        Store (Zero, C2LE)
+                    }
+                }
+            }
+            ElseIf (LEqual (_T_0, 0x0D))
+            {
+                If (LEqual (Arg2, 0x2E))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, C1LE)
+                    }
+                    Else
+                    {
+                        Store (Zero, C1LE)
+                    }
+                }
 
-                                    If (LEqual (Arg2, 0x0208))
-                                    {
-                                        If (Arg1)
-                                        {
-                                            Store (One, GHLE)
-                                        }
-                                        Else
-                                        {
-                                            Store (Zero, GHLE)
-                                        }
-                                    }
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0x0A))
-                                    {
-                                        If (LOr (LEqual (Arg2, 0x60), LEqual (Arg2, 0x64)))
-                                        {
-                                            If (Arg1)
-                                            {
-                                                Store (One, KCLE)
-                                            }
-                                            Else
-                                            {
-                                                Store (Zero, KCLE)
-                                            }
-                                        }
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x0B))
-                                        {
-                                            If (LOr (LEqual (Arg2, 0x62), LEqual (Arg2, 0x66)))
-                                            {
-                                                If (Arg1)
-                                                {
-                                                    Store (One, MCLE)
-                                                }
-                                                Else
-                                                {
-                                                    Store (Zero, MCLE)
-                                                }
-                                            }
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0x0C))
-                                            {
-                                                If (LEqual (Arg2, 0x2E))
-                                                {
-                                                    If (Arg1)
-                                                    {
-                                                        Store (One, C1LE)
-                                                    }
-                                                    Else
-                                                    {
-                                                        Store (Zero, C1LE)
-                                                    }
-                                                }
-
-                                                If (LEqual (Arg2, 0x4E))
-                                                {
-                                                    If (Arg1)
-                                                    {
-                                                        Store (One, C2LE)
-                                                    }
-                                                    Else
-                                                    {
-                                                        Store (Zero, C2LE)
-                                                    }
-                                                }
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0x0D))
-                                                {
-                                                    If (LEqual (Arg2, 0x2E))
-                                                    {
-                                                        If (Arg1)
-                                                        {
-                                                            Store (One, C1LE)
-                                                        }
-                                                        Else
-                                                        {
-                                                            Store (Zero, C1LE)
-                                                        }
-                                                    }
-
-                                                    If (LEqual (Arg2, 0x4E))
-                                                    {
-                                                        If (Arg1)
-                                                        {
-                                                            Store (One, C2LE)
-                                                        }
-                                                        Else
-                                                        {
-                                                            Store (Zero, C2LE)
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                If (LEqual (Arg2, 0x4E))
+                {
+                    If (Arg1)
+                    {
+                        Store (One, C2LE)
+                    }
+                    Else
+                    {
+                        Store (Zero, C2LE)
                     }
                 }
             }
@@ -10178,8 +9927,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             }
         }
 
-        If (LAnd (LNotEqual (And (\_SB.PCI0.B0D3.ABAR, 0xFFFFC004), 0xFFFFC004), LNotEqual (And (
-            \_SB.PCI0.B0D3.ABAR, 0xFFFFC000), Zero)))
+        If (LAnd (LNotEqual (And (\_SB.PCI0.B0D3.ABAR, 0xFFFFC004), 0xFFFFC004), LNotEqual (And (\_SB.PCI0.B0D3.ABAR, 0xFFFFC000), Zero)))
         {
             Store (\_SB.PCI0.B0D3.ABAR, \_SB.PCI0.B0D3.BARA)
         }
@@ -10190,8 +9938,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 If (LEqual (\_SB.IAOE.ITMR, One))
                 {
-                    If (LAnd (And (\_SB.IAOE.IBT1, One), LOr (And (\_SB.IAOE.WKRS, 0x02), And (
-                        \_SB.IAOE.WKRS, 0x10))))
+                    If (LAnd (And (\_SB.IAOE.IBT1, One), LOr (And (\_SB.IAOE.WKRS, 0x02), And (\_SB.IAOE.WKRS, 0x10))))
                     {
                         Store (Or (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), One), \_SB.PCI0.GFX0.STAT)
                     }
@@ -10200,17 +9947,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         Store (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), \_SB.PCI0.GFX0.STAT)
                     }
                 }
+                ElseIf (LAnd (And (\_SB.IAOE.IBT1, One), LOr (And (\_SB.IAOE.WKRS, 0x02), And (\_SB.IAOE.WKRS, 0x10))))
+                {
+                    Store (Or (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), One), \_SB.PCI0.GFX0.STAT)
+                }
                 Else
                 {
-                    If (LAnd (And (\_SB.IAOE.IBT1, One), LOr (And (\_SB.IAOE.WKRS, 0x02), And (
-                        \_SB.IAOE.WKRS, 0x10))))
-                    {
-                        Store (Or (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), One), \_SB.PCI0.GFX0.STAT)
-                    }
-                    Else
-                    {
-                        Store (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), \_SB.PCI0.GFX0.STAT)
-                    }
+                    Store (And (\_SB.PCI0.GFX0.STAT, 0xFFFFFFFFFFFFFFFC), \_SB.PCI0.GFX0.STAT)
                 }
             }
 
@@ -10257,54 +10000,51 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
         {
             Notify (\_SB.PCCD, 0x82)
         }
-        Else
+        ElseIf (LGreater (TCNT, One))
         {
-            If (LGreater (TCNT, One))
-            {
-                If (And (PDC0, 0x08))
-                {
-                    Notify (\_PR.CPU0, 0x80)
-                }
-
-                If (And (PDC1, 0x08))
-                {
-                    Notify (\_PR.CPU1, 0x80)
-                }
-
-                If (And (PDC2, 0x08))
-                {
-                    Notify (\_PR.CPU2, 0x80)
-                }
-
-                If (And (PDC3, 0x08))
-                {
-                    Notify (\_PR.CPU3, 0x80)
-                }
-
-                If (And (PDC4, 0x08))
-                {
-                    Notify (\_PR.CPU4, 0x80)
-                }
-
-                If (And (PDC5, 0x08))
-                {
-                    Notify (\_PR.CPU5, 0x80)
-                }
-
-                If (And (PDC6, 0x08))
-                {
-                    Notify (\_PR.CPU6, 0x80)
-                }
-
-                If (And (PDC7, 0x08))
-                {
-                    Notify (\_PR.CPU7, 0x80)
-                }
-            }
-            Else
+            If (And (PDC0, 0x08))
             {
                 Notify (\_PR.CPU0, 0x80)
             }
+
+            If (And (PDC1, 0x08))
+            {
+                Notify (\_PR.CPU1, 0x80)
+            }
+
+            If (And (PDC2, 0x08))
+            {
+                Notify (\_PR.CPU2, 0x80)
+            }
+
+            If (And (PDC3, 0x08))
+            {
+                Notify (\_PR.CPU3, 0x80)
+            }
+
+            If (And (PDC4, 0x08))
+            {
+                Notify (\_PR.CPU4, 0x80)
+            }
+
+            If (And (PDC5, 0x08))
+            {
+                Notify (\_PR.CPU5, 0x80)
+            }
+
+            If (And (PDC6, 0x08))
+            {
+                Notify (\_PR.CPU6, 0x80)
+            }
+
+            If (And (PDC7, 0x08))
+            {
+                Notify (\_PR.CPU7, 0x80)
+            }
+        }
+        Else
+        {
+            Notify (\_PR.CPU0, 0x80)
         }
 
         If (LGreater (TCNT, One))
@@ -10560,30 +10300,21 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     Store (0x07DD, OSYS)
                 }
             }
+            ElseIf (MCTH (_OS, "Microsoft Windows"))
+            {
+                Store (0x07CE, OSYS)
+            }
+            ElseIf (MCTH (_OS, "Microsoft WindowsME: Millennium Edition"))
+            {
+                Store (0x07D0, OSYS)
+            }
+            ElseIf (MCTH (_OS, "Microsoft Windows NT"))
+            {
+                Store (0x07D0, OSYS)
+            }
             Else
             {
-                If (MCTH (_OS, "Microsoft Windows"))
-                {
-                    Store (0x07CE, OSYS)
-                }
-                Else
-                {
-                    If (MCTH (_OS, "Microsoft WindowsME: Millennium Edition"))
-                    {
-                        Store (0x07D0, OSYS)
-                    }
-                    Else
-                    {
-                        If (MCTH (_OS, "Microsoft Windows NT"))
-                        {
-                            Store (0x07D0, OSYS)
-                        }
-                        Else
-                        {
-                            Store (0x07D1, OSYS)
-                        }
-                    }
-                }
+                Store (0x07D1, OSYS)
             }
         }
 
@@ -11254,33 +10985,27 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                                         }
                                     })
                                 }
+                                ElseIf (LEqual (_T_0, 0x02))
+                                {
+                                    Return (Package (0x02)
+                                    {
+                                        One, 
+                                        Package (0x01)
+                                        {
+                                            "\\_SB.PCI0.SAT0.PRT1"
+                                        }
+                                    })
+                                }
+                                ElseIf (LEqual (_T_0, 0x03))
+                                {
+                                    Return (DEVS)
+                                }
                                 Else
                                 {
-                                    If (LEqual (_T_0, 0x02))
+                                    Return (Package (0x01)
                                     {
-                                        Return (Package (0x02)
-                                        {
-                                            One, 
-                                            Package (0x01)
-                                            {
-                                                "\\_SB.PCI0.SAT0.PRT1"
-                                            }
-                                        })
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x03))
-                                        {
-                                            Return (DEVS)
-                                        }
-                                        Else
-                                        {
-                                            Return (Package (0x01)
-                                            {
-                                                Zero
-                                            })
-                                        }
-                                    }
+                                        Zero
+                                    })
                                 }
 
                                 Break
@@ -11623,12 +11348,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Notify (\_SB.PCI0.XHC, 0x02)
             }
-            Else
+            ElseIf (LEqual (\_SB.PCI0.XHC.PMEE, Zero))
             {
-                If (LEqual (\_SB.PCI0.XHC.PMEE, Zero))
-                {
-                    Store (One, \_SB.PCI0.XHC.PMES)
-                }
+                Store (One, \_SB.PCI0.XHC.PMES)
             }
 
             If (LAnd (\_SB.PCI0.HDEF.PMEE, \_SB.PCI0.HDEF.PMES))
@@ -11929,162 +11651,108 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             Store (Zero, TEMP)
                             Break
                         }
+                        ElseIf (LEqual (_T_0, One))
+                        {
+                            Store (Zero, TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0x02))
+                        {
+                            Store (Zero, TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xA1))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xA2))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xB1))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xB2))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0x61))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0x62))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xE1))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xE2))
+                        {
+                            Store (Subtract (Arg1, One), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xA5))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xA6))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xB5))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xB6))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0x65))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0x66))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xE5))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
+                        ElseIf (LEqual (_T_0, 0xE6))
+                        {
+                            Or (HCTL, 0x40, HCTL)
+                            Store (Subtract (Arg1, 0x02), TEMP)
+                            Break
+                        }
                         Else
                         {
-                            If (LEqual (_T_0, One))
-                            {
-                                Store (Zero, TEMP)
-                                Break
-                            }
-                            Else
-                            {
-                                If (LEqual (_T_0, 0x02))
-                                {
-                                    Store (Zero, TEMP)
-                                    Break
-                                }
-                                Else
-                                {
-                                    If (LEqual (_T_0, 0xA1))
-                                    {
-                                        Store (Subtract (Arg1, One), TEMP)
-                                        Break
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0xA2))
-                                        {
-                                            Store (Subtract (Arg1, One), TEMP)
-                                            Break
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0xB1))
-                                            {
-                                                Store (Subtract (Arg1, One), TEMP)
-                                                Break
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0xB2))
-                                                {
-                                                    Store (Subtract (Arg1, One), TEMP)
-                                                    Break
-                                                }
-                                                Else
-                                                {
-                                                    If (LEqual (_T_0, 0x61))
-                                                    {
-                                                        Store (Subtract (Arg1, One), TEMP)
-                                                        Break
-                                                    }
-                                                    Else
-                                                    {
-                                                        If (LEqual (_T_0, 0x62))
-                                                        {
-                                                            Store (Subtract (Arg1, One), TEMP)
-                                                            Break
-                                                        }
-                                                        Else
-                                                        {
-                                                            If (LEqual (_T_0, 0xE1))
-                                                            {
-                                                                Store (Subtract (Arg1, One), TEMP)
-                                                                Break
-                                                            }
-                                                            Else
-                                                            {
-                                                                If (LEqual (_T_0, 0xE2))
-                                                                {
-                                                                    Store (Subtract (Arg1, One), TEMP)
-                                                                    Break
-                                                                }
-                                                                Else
-                                                                {
-                                                                    If (LEqual (_T_0, 0xA5))
-                                                                    {
-                                                                        Or (HCTL, 0x40, HCTL)
-                                                                        Store (Subtract (Arg1, 0x02), TEMP)
-                                                                        Break
-                                                                    }
-                                                                    Else
-                                                                    {
-                                                                        If (LEqual (_T_0, 0xA6))
-                                                                        {
-                                                                            Or (HCTL, 0x40, HCTL)
-                                                                            Store (Subtract (Arg1, 0x02), TEMP)
-                                                                            Break
-                                                                        }
-                                                                        Else
-                                                                        {
-                                                                            If (LEqual (_T_0, 0xB5))
-                                                                            {
-                                                                                Or (HCTL, 0x40, HCTL)
-                                                                                Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                Break
-                                                                            }
-                                                                            Else
-                                                                            {
-                                                                                If (LEqual (_T_0, 0xB6))
-                                                                                {
-                                                                                    Or (HCTL, 0x40, HCTL)
-                                                                                    Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                    Break
-                                                                                }
-                                                                                Else
-                                                                                {
-                                                                                    If (LEqual (_T_0, 0x65))
-                                                                                    {
-                                                                                        Or (HCTL, 0x40, HCTL)
-                                                                                        Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                        Break
-                                                                                    }
-                                                                                    Else
-                                                                                    {
-                                                                                        If (LEqual (_T_0, 0x66))
-                                                                                        {
-                                                                                            Or (HCTL, 0x40, HCTL)
-                                                                                            Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                            Break
-                                                                                        }
-                                                                                        Else
-                                                                                        {
-                                                                                            If (LEqual (_T_0, 0xE5))
-                                                                                            {
-                                                                                                Or (HCTL, 0x40, HCTL)
-                                                                                                Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                                Break
-                                                                                            }
-                                                                                            Else
-                                                                                            {
-                                                                                                If (LEqual (_T_0, 0xE6))
-                                                                                                {
-                                                                                                    Or (HCTL, 0x40, HCTL)
-                                                                                                    Store (Subtract (Arg1, 0x02), TEMP)
-                                                                                                    Break
-                                                                                                }
-                                                                                                Else
-                                                                                                {
-                                                                                                    And (PBSY, 0xFE, PBSY)
-                                                                                                    Return (Zero)
-                                                                                                }
-                                                                                            }
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            And (PBSY, 0xFE, PBSY)
+                            Return (Zero)
                         }
 
                         Break
@@ -12547,6 +12215,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 Store (BB1F, Index (TEMP, 0x1F))
                 Return (TEMP)
             }
+
             Method (WRBB, 1, Serialized)
             {
                 Name (TEMP, Buffer (0x20) {})
@@ -12901,8 +12570,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             While (Local0)
             {
                 Decrement (Local0)
-                If (LNotEqual (DerefOf (Index (BUF0, Local0)), DerefOf (Index (BUF1, Local0
-                    ))))
+                If (LNotEqual (DerefOf (Index (BUF0, Local0)), DerefOf (Index (BUF1, Local0))))
                 {
                     Return (Zero)
                 }
@@ -12917,44 +12585,29 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Store (OSW8, OSFG)
             }
+            ElseIf (LEqual (OSYS, 0x07D9))
+            {
+                Store (OSW7, OSFG)
+            }
+            ElseIf (LEqual (OSYS, 0x07D6))
+            {
+                Store (OSVT, OSFG)
+            }
+            ElseIf (LAnd (LGreaterEqual (OSYS, 0x07D1), LLessEqual (OSYS, 0x07D3)))
+            {
+                Store (OSXP, OSFG)
+            }
+            ElseIf (LEqual (OSYS, 0x07D0))
+            {
+                Store (OSME, OSFG)
+            }
+            ElseIf (LEqual (OSYS, 0x07CE))
+            {
+                Store (OS98, OSFG)
+            }
             Else
             {
-                If (LEqual (OSYS, 0x07D9))
-                {
-                    Store (OSW7, OSFG)
-                }
-                Else
-                {
-                    If (LEqual (OSYS, 0x07D6))
-                    {
-                        Store (OSVT, OSFG)
-                    }
-                    Else
-                    {
-                        If (LAnd (LGreaterEqual (OSYS, 0x07D1), LLessEqual (OSYS, 0x07D3)))
-                        {
-                            Store (OSXP, OSFG)
-                        }
-                        Else
-                        {
-                            If (LEqual (OSYS, 0x07D0))
-                            {
-                                Store (OSME, OSFG)
-                            }
-                            Else
-                            {
-                                If (LEqual (OSYS, 0x07CE))
-                                {
-                                    Store (OS98, OSFG)
-                                }
-                                Else
-                                {
-                                    Store (OSW8, OSFG)
-                                }
-                            }
-                        }
-                    }
-                }
+                Store (OSW8, OSFG)
             }
 
             Return (OSFG)
@@ -13186,12 +12839,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         {
                             Return (0x00010001)
                         }
-                        Else
+                        ElseIf (LEqual (Local0, Zero))
                         {
-                            If (LEqual (Local0, Zero))
-                            {
-                                Return (0x00010000)
-                            }
+                            Return (0x00010000)
                         }
                     }
 
@@ -13418,16 +13068,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             {
                                 Store (^^PCI0.LPCB.EC0.B0RC, Local1)
                             }
+                            ElseIf (LEqual (Local0, 0x04))
+                            {
+                                Store (^^PCI0.LPCB.EC0.B1RC, Local1)
+                            }
                             Else
                             {
-                                If (LEqual (Local0, 0x04))
-                                {
-                                    Store (^^PCI0.LPCB.EC0.B1RC, Local1)
-                                }
-                                Else
-                                {
-                                    Store (Add (^^PCI0.LPCB.EC0.B0RC, ^^PCI0.LPCB.EC0.B1RC), Local1)
-                                }
+                                Store (Add (^^PCI0.LPCB.EC0.B0RC, ^^PCI0.LPCB.EC0.B1RC), Local1)
                             }
 
                             Return (Add (Local1, 0x00010000))
@@ -13483,16 +13130,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             {
                                 Store (^^PCI0.LPCB.EC0.B0DV, Local1)
                             }
+                            ElseIf (LEqual (Local0, 0x04))
+                            {
+                                Store (^^PCI0.LPCB.EC0.B1DV, Local1)
+                            }
                             Else
                             {
-                                If (LEqual (Local0, 0x04))
-                                {
-                                    Store (^^PCI0.LPCB.EC0.B1DV, Local1)
-                                }
-                                Else
-                                {
-                                    Store (Add (^^PCI0.LPCB.EC0.B0DV, ^^PCI0.LPCB.EC0.B1DV), Local1)
-                                }
+                                Store (Add (^^PCI0.LPCB.EC0.B0DV, ^^PCI0.LPCB.EC0.B1DV), Local1)
                             }
 
                             Return (Add (Local1, 0x00010000))
@@ -13510,16 +13154,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                             {
                                 Store (^^PCI0.LPCB.EC0.B0FC, Local1)
                             }
+                            ElseIf (LEqual (Local0, 0x04))
+                            {
+                                Store (^^PCI0.LPCB.EC0.B1FC, Local1)
+                            }
                             Else
                             {
-                                If (LEqual (Local0, 0x04))
-                                {
-                                    Store (^^PCI0.LPCB.EC0.B1FC, Local1)
-                                }
-                                Else
-                                {
-                                    Store (Add (^^PCI0.LPCB.EC0.B0FC, ^^PCI0.LPCB.EC0.B1FC), Local1)
-                                }
+                                Store (Add (^^PCI0.LPCB.EC0.B0FC, ^^PCI0.LPCB.EC0.B1FC), Local1)
                             }
 
                             Return (Add (Local1, 0x00010000))
@@ -14035,12 +13676,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Store (One, Local2)
                 }
-                Else
+                ElseIf (LEqual (Local1, 0x37))
                 {
-                    If (LEqual (Local1, 0x37))
-                    {
-                        Store (One, Local2)
-                    }
+                    Store (One, Local2)
                 }
 
                 If (LEqual (Local2, One))
@@ -14124,12 +13762,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Return (0x00070009)
                 }
-                Else
+                ElseIf (LEqual (Arg0, One))
                 {
-                    If (LEqual (Arg0, One))
-                    {
-                        Return (One)
-                    }
+                    Return (One)
                 }
 
                 Return (0xFFFFFFFE)
@@ -14378,27 +14013,21 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         Notify (\_PR.CPU6, 0x80)
                         Notify (\_PR.CPU7, 0x80)
                     }
+                    ElseIf (LEqual (_T_0, 0x04))
+                    {
+                        Notify (\_PR.CPU0, 0x80)
+                        Notify (\_PR.CPU1, 0x80)
+                        Notify (\_PR.CPU2, 0x80)
+                        Notify (\_PR.CPU3, 0x80)
+                    }
+                    ElseIf (LEqual (_T_0, 0x02))
+                    {
+                        Notify (\_PR.CPU0, 0x80)
+                        Notify (\_PR.CPU1, 0x80)
+                    }
                     Else
                     {
-                        If (LEqual (_T_0, 0x04))
-                        {
-                            Notify (\_PR.CPU0, 0x80)
-                            Notify (\_PR.CPU1, 0x80)
-                            Notify (\_PR.CPU2, 0x80)
-                            Notify (\_PR.CPU3, 0x80)
-                        }
-                        Else
-                        {
-                            If (LEqual (_T_0, 0x02))
-                            {
-                                Notify (\_PR.CPU0, 0x80)
-                                Notify (\_PR.CPU1, 0x80)
-                            }
-                            Else
-                            {
-                                Notify (\_PR.CPU0, 0x80)
-                            }
-                        }
+                        Notify (\_PR.CPU0, 0x80)
                     }
 
                     Break
@@ -14545,16 +14174,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     {
                         Return (One)
                     }
+                    ElseIf (LEqual (Arg0, 0x02))
+                    {
+                        Return (GCDM ())
+                    }
                     Else
                     {
-                        If (LEqual (Arg0, 0x02))
-                        {
-                            Return (GCDM ())
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
+                        Return (Zero)
                     }
                 }
 
@@ -14656,8 +14282,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             Method (SCDG, 1, NotSerialized)
             {
                 Store (CALB, CA1M)
-                If (LNot (LAnd (LGreaterEqual (ToInteger (Arg0), Zero), LLessEqual (ToInteger (
-                    Arg0), 0x09))))
+                If (LNot (LAnd (LGreaterEqual (ToInteger (Arg0), Zero), LLessEqual (ToInteger (Arg0), 0x09))))
                 {
                     Store (Zero, Index (MEMD, Zero))
                     Return (MEMD)
@@ -15516,12 +15141,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 ^^^^ATKD.IANE (0x6E)
             }
-            Else
+            ElseIf (BATP (Zero))
             {
-                If (BATP (Zero))
-                {
-                    Notify (BAT0, 0x80)
-                }
+                Notify (BAT0, 0x80)
             }
         }
 
@@ -18318,44 +17940,34 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 ISMI (0x9A)
             }
-            Else
+            ElseIf (LEqual (Local2, One))
             {
-                If (LEqual (Local2, One))
+                If (LNotEqual (MSOS (), OSEG))
                 {
-                    If (LNotEqual (MSOS (), OSEG))
+                    If (LLess (MSOS (), OSW8))
                     {
-                        If (LLess (MSOS (), OSW8))
-                        {
-                            Store (BRTI, Local4)
-                            ShiftLeft (Local4, 0x04, Local4)
-                            Store (LBTN, Local3)
-                            Store (Add (Local4, Local3), Local3)
-                            ^^^GFX0.AINT (One, Divide (Multiply (DerefOf (Index (PWAC, Local3)), 0x64), 0xFF, 
-                                ))
-                        }
-                    }
-                    Else
-                    {
-                        ISMI (0x9A)
+                        Store (BRTI, Local4)
+                        ShiftLeft (Local4, 0x04, Local4)
+                        Store (LBTN, Local3)
+                        Store (Add (Local4, Local3), Local3)
+                        ^^^GFX0.AINT (One, Divide (Multiply (DerefOf (Index (PWAC, Local3)), 0x64), 0xFF, ))
                     }
                 }
                 Else
                 {
-                    If (LEqual (Local2, Zero))
-                    {
-                        ECCB ()
-                    }
-                    Else
-                    {
-                        If (LEqual (Local2, 0x02))
-                        {
-                            ISMI (0x9A)
-                        }
-                        Else
-                        {
-                        }
-                    }
+                    ISMI (0x9A)
                 }
+            }
+            ElseIf (LEqual (Local2, Zero))
+            {
+                ECCB ()
+            }
+            ElseIf (LEqual (Local2, 0x02))
+            {
+                ISMI (0x9A)
+            }
+            Else
+            {
             }
         }
 
@@ -18918,16 +18530,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         Store (SBBY, Index (Local1, Zero))
                         Store (Zero, Local0)
                     }
+                    ElseIf (LEqual (Arg0, Zero))
+                    {
+                        Store (PRTC, Local0)
+                    }
                     Else
                     {
-                        If (LEqual (Arg0, Zero))
-                        {
-                            Store (PRTC, Local0)
-                        }
-                        Else
-                        {
-                            Store (PRT2, Local0)
-                        }
+                        Store (PRT2, Local0)
                     }
                 }
 
@@ -19307,16 +18916,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         Store (One, Local0)
                     }
                 }
+                ElseIf (LLess (Local1, 0xF5))
+                {
+                    Store (0x02, Local0)
+                }
                 Else
                 {
-                    If (LLess (Local1, 0xF5))
-                    {
-                        Store (0x02, Local0)
-                    }
-                    Else
-                    {
-                        Store (0x03, Local0)
-                    }
+                    Store (0x03, Local0)
                 }
             }
             Else
@@ -19444,19 +19050,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         {
                             Store (Zero, Local0)
                         }
-                        Else
+                        ElseIf (LEqual (Local1, 0x02))
                         {
-                            If (LEqual (Local1, 0x02))
-                            {
-                                Store (One, Local0)
-                            }
-                            Else
-                            {
-                                If (LEqual (Local1, 0x10))
-                                {
-                                    Store (One, Local0)
-                                }
-                            }
+                            Store (One, Local0)
+                        }
+                        ElseIf (LEqual (Local1, 0x10))
+                        {
+                            Store (One, Local0)
                         }
                     }
                 }
@@ -19467,42 +19067,31 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
 
                 Return (Local0)
             }
-            Else
+            ElseIf (ECAV ())
             {
-                If (ECAV ())
+                Store (Ones, Local0)
+                Store (EB0S, Local1)
+                And (Local1, 0xFFFF, Local1)
+                If (LNotEqual (Local1, 0xFFFF))
                 {
-                    Store (Ones, Local0)
-                    Store (EB0S, Local1)
-                    And (Local1, 0xFFFF, Local1)
-                    If (LNotEqual (Local1, 0xFFFF))
+                    And (Local1, 0x16, Local1)
+                    If (LEqual (Local1, 0x04))
                     {
-                        And (Local1, 0x16, Local1)
-                        If (LEqual (Local1, 0x04))
-                        {
-                            Store (Zero, Local0)
-                        }
-                        Else
-                        {
-                            If (LEqual (Local1, 0x02))
-                            {
-                                Store (One, Local0)
-                            }
-                            Else
-                            {
-                                If (LEqual (Local1, 0x10))
-                                {
-                                    Store (One, Local0)
-                                }
-                            }
-                        }
+                        Store (Zero, Local0)
+                    }
+                    ElseIf (LEqual (Local1, 0x02))
+                    {
+                        Store (One, Local0)
+                    }
+                    ElseIf (LEqual (Local1, 0x10))
+                    {
+                        Store (One, Local0)
                     }
                 }
-                Else
-                {
-                    Store (Ones, Local0)
-                }
-
-                Return (Local0)
+            }
+            Else
+            {
+                Store (Ones, Local0)
             }
         }
 
@@ -19545,17 +19134,14 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         Store (B1B2 (TH00, TH01), Local0)
                         Break
                     }
+                    ElseIf (LEqual (_T_0, One))
+                    {
+                        Store (B1B2 (TH10, TH11), Local0)
+                        Break
+                    }
                     Else
                     {
-                        If (LEqual (_T_0, One))
-                        {
-                            Store (B1B2 (TH10, TH11), Local0)
-                            Break
-                        }
-                        Else
-                        {
-                            Return (Ones)
-                        }
+                        Return (Ones)
                     }
 
                     Break
@@ -19687,202 +19273,172 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Notify (ASHS, 0x88)
             }
+            ElseIf (And (^^^^ATKD.WAPF, 0x04))
+            {
+                If (ATKP)
+                {
+                    ^^^^ATKD.IANE (0x88)
+                }
+            }
             Else
             {
-                If (And (^^^^ATKD.WAPF, 0x04))
+                Store (OHWR (), Local0)
+                If (And (Local0, 0x02))
                 {
-                    If (ATKP)
+                    If (And (Local0, One))
                     {
-                        ^^^^ATKD.IANE (0x88)
+                        Store (One, Local0)
+                    }
+                    Else
+                    {
+                        Store (Zero, Local0)
                     }
                 }
                 Else
                 {
-                    Store (OHWR (), Local0)
-                    If (And (Local0, 0x02))
+                    Store (One, Local0)
+                }
+
+                If (Local0)
+                {
+                    If (And (^^^^ATKD.WAPF, One))
                     {
-                        If (And (Local0, One))
+                        If (LAnd (WLDP, BTDP))
                         {
-                            Store (One, Local0)
+                            Store (WRST, Local0)
+                            Or (ShiftLeft (BRST, One), Local0, Local0)
+                            Increment (Local0)
+                            If (LGreater (Local0, 0x03))
+                            {
+                                Store (Zero, Local0)
+                            }
+
+                            Store (DerefOf (Index (WBTL, Local0)), Local1)
+                            If (LEqual (Local1, Zero))
+                            {
+                                ^^^^ATKD.IANE (0x74)
+                                OWLD (Zero)
+                                Sleep (0x0DAC)
+                                OBTD (Zero)
+                            }
+
+                            If (LEqual (Local1, One))
+                            {
+                                ^^^^ATKD.IANE (0x73)
+                                OWLD (One)
+                                Sleep (0x0DAC)
+                                OBTD (One)
+                            }
+
+                            If (LEqual (Local1, 0x02))
+                            {
+                                ^^^^ATKD.IANE (0x74)
+                                OWLD (Zero)
+                                Sleep (0x0DAC)
+                                OBTD (Zero)
+                            }
+
+                            If (LEqual (Local1, 0x03))
+                            {
+                                ^^^^ATKD.IANE (0x74)
+                                OWLD (Zero)
+                                Sleep (0x0DAC)
+                                OBTD (Zero)
+                            }
                         }
-                        Else
+                        ElseIf (WLDP)
+                        {
+                            ^^^^ATKD.IANE (0x5D)
+                        }
+                        ElseIf (BTDP)
+                        {
+                            If (BRST)
+                            {
+                                OBTD (Zero)
+                                ^^^^ATKD.IANE (0x7E)
+                            }
+                            Else
+                            {
+                                OBTD (One)
+                                ^^^^ATKD.IANE (0x7D)
+                            }
+                        }
+                    }
+                    ElseIf (LAnd (WLDP, BTDP))
+                    {
+                        Store (WRST, Local0)
+                        Or (ShiftLeft (BRST, One), Local0, Local0)
+                        Increment (Local0)
+                        If (LGreater (Local0, 0x03))
                         {
                             Store (Zero, Local0)
                         }
-                    }
-                    Else
-                    {
-                        Store (One, Local0)
-                    }
 
-                    If (Local0)
-                    {
-                        If (And (^^^^ATKD.WAPF, One))
+                        Store (DerefOf (Index (WBTL, Local0)), Local1)
+                        If (LEqual (Local1, Zero))
                         {
-                            If (LAnd (WLDP, BTDP))
-                            {
-                                Store (WRST, Local0)
-                                Or (ShiftLeft (BRST, One), Local0, Local0)
-                                Increment (Local0)
-                                If (LGreater (Local0, 0x03))
-                                {
-                                    Store (Zero, Local0)
-                                }
+                            OWLD (Zero)
+                            ^^^^ATKD.IANE (0x5F)
+                            Sleep (0x0DAC)
+                            OBTD (Zero)
+                            ^^^^ATKD.IANE (0x7E)
+                        }
 
-                                Store (DerefOf (Index (WBTL, Local0)), Local1)
-                                If (LEqual (Local1, Zero))
-                                {
-                                    ^^^^ATKD.IANE (0x74)
-                                    OWLD (Zero)
-                                    Sleep (0x0DAC)
-                                    OBTD (Zero)
-                                }
+                        If (LEqual (Local1, One))
+                        {
+                            OWLD (One)
+                            ^^^^ATKD.IANE (0x5E)
+                            Sleep (0x0DAC)
+                            OBTD (Zero)
+                            ^^^^ATKD.IANE (0x7E)
+                        }
 
-                                If (LEqual (Local1, One))
-                                {
-                                    ^^^^ATKD.IANE (0x73)
-                                    OWLD (One)
-                                    Sleep (0x0DAC)
-                                    OBTD (One)
-                                }
+                        If (LEqual (Local1, 0x02))
+                        {
+                            OWLD (Zero)
+                            ^^^^ATKD.IANE (0x5F)
+                            Sleep (0x0DAC)
+                            OBTD (One)
+                            ^^^^ATKD.IANE (0x7D)
+                        }
 
-                                If (LEqual (Local1, 0x02))
-                                {
-                                    ^^^^ATKD.IANE (0x74)
-                                    OWLD (Zero)
-                                    Sleep (0x0DAC)
-                                    OBTD (Zero)
-                                }
-
-                                If (LEqual (Local1, 0x03))
-                                {
-                                    ^^^^ATKD.IANE (0x74)
-                                    OWLD (Zero)
-                                    Sleep (0x0DAC)
-                                    OBTD (Zero)
-                                }
-                            }
-                            Else
-                            {
-                                If (WLDP)
-                                {
-                                    ^^^^ATKD.IANE (0x5D)
-                                }
-                                Else
-                                {
-                                    If (BTDP)
-                                    {
-                                        If (BRST)
-                                        {
-                                            OBTD (Zero)
-                                            ^^^^ATKD.IANE (0x7E)
-                                        }
-                                        Else
-                                        {
-                                            OBTD (One)
-                                            ^^^^ATKD.IANE (0x7D)
-                                        }
-                                    }
-                                }
-                            }
+                        If (LEqual (Local1, 0x03))
+                        {
+                            OWLD (One)
+                            ^^^^ATKD.IANE (0x5E)
+                            Sleep (0x0DAC)
+                            OBTD (One)
+                            ^^^^ATKD.IANE (0x7D)
+                        }
+                    }
+                    ElseIf (WLDP)
+                    {
+                        If (WRST)
+                        {
+                            OWLD (Zero)
+                            ^^^^ATKD.IANE (0x5F)
                         }
                         Else
                         {
-                            If (LAnd (WLDP, BTDP))
-                            {
-                                Store (WRST, Local0)
-                                Or (ShiftLeft (BRST, One), Local0, Local0)
-                                Increment (Local0)
-                                If (LGreater (Local0, 0x03))
-                                {
-                                    Store (Zero, Local0)
-                                }
-
-                                Store (DerefOf (Index (WBTL, Local0)), Local1)
-                                If (LEqual (Local1, Zero))
-                                {
-                                    OWLD (Zero)
-                                    ^^^^ATKD.IANE (0x5F)
-                                    Sleep (0x0DAC)
-                                    OBTD (Zero)
-                                    ^^^^ATKD.IANE (0x7E)
-                                }
-
-                                If (LEqual (Local1, One))
-                                {
-                                    OWLD (One)
-                                    ^^^^ATKD.IANE (0x5E)
-                                    Sleep (0x0DAC)
-                                    OBTD (Zero)
-                                    ^^^^ATKD.IANE (0x7E)
-                                }
-
-                                If (LEqual (Local1, 0x02))
-                                {
-                                    OWLD (Zero)
-                                    ^^^^ATKD.IANE (0x5F)
-                                    Sleep (0x0DAC)
-                                    OBTD (One)
-                                    ^^^^ATKD.IANE (0x7D)
-                                }
-
-                                If (LEqual (Local1, 0x03))
-                                {
-                                    OWLD (One)
-                                    ^^^^ATKD.IANE (0x5E)
-                                    Sleep (0x0DAC)
-                                    OBTD (One)
-                                    ^^^^ATKD.IANE (0x7D)
-                                }
-                            }
-                            Else
-                            {
-                                If (WLDP)
-                                {
-                                    If (WRST)
-                                    {
-                                        OWLD (Zero)
-                                        ^^^^ATKD.IANE (0x5F)
-                                    }
-                                    Else
-                                    {
-                                        OWLD (One)
-                                        ^^^^ATKD.IANE (0x5E)
-                                    }
-                                }
-                                Else
-                                {
-                                    If (BTDP)
-                                    {
-                                        If (BRST)
-                                        {
-                                            OBTD (Zero)
-                                            ^^^^ATKD.IANE (0x7E)
-                                        }
-                                        Else
-                                        {
-                                            OBTD (One)
-                                            ^^^^ATKD.IANE (0x7D)
-                                        }
-                                    }
-                                }
-                            }
+                            OWLD (One)
+                            ^^^^ATKD.IANE (0x5E)
                         }
                     }
-                    Else
+                    ElseIf (BTDP)
                     {
-                        If (WLDP) {}
-                        If (LAnd (WLDP, BTDP))
+                        If (BRST)
                         {
-                            Sleep (0x0DAC)
-                        }
-
-                        If (BTDP)
-                        {
+                            OBTD (Zero)
                             ^^^^ATKD.IANE (0x7E)
+                        }
+                        Else
+                        {
+                            OBTD (One)
+                            ^^^^ATKD.IANE (0x7D)
                         }
                     }
                 }
+                ElseIf (WLDP) {}
             }
         }
 
@@ -19962,40 +19518,15 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 If (ATKP)
                 {
                     If (LGreaterEqual (MSOS (), OSW8)) {}
-                    Else
+                    ElseIf (LGreater (Local0, Zero))
                     {
-                        If (LGreater (Local0, Zero))
-                        {
-                            Decrement (Local0)
-                        }
-
-                        If (LGreater (Local0, 0x0A))
-                        {
-                            Store (0x0A, Local0)
-                        }
-
-                        Store (Local0, LBTN)
-                        ^^^^ATKD.IANE (Add (Local0, 0x20))
+                        Decrement (Local0)
                     }
                 }
             }
-            Else
+            ElseIf (LGreater (LBTN, Zero))
             {
-                If (LGreater (LBTN, Zero))
-                {
-                    Decrement (LBTN)
-                }
-
-                If (LGreater (LBTN, 0x0A))
-                {
-                    Store (0x0A, LBTN)
-                }
-
-                STBR ()
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE (Add (LBTN, 0x20))
-                }
+                Decrement (LBTN)
             }
 
             Return (One)
@@ -20040,38 +19571,23 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 If (ATKP)
                 {
                     If (LGreaterEqual (MSOS (), OSW8)) {}
+                    ElseIf (LLess (Local0, 0x0A))
+                    {
+                        Increment (Local0)
+                    }
                     Else
                     {
-                        If (LLess (Local0, 0x0A))
-                        {
-                            Increment (Local0)
-                        }
-                        Else
-                        {
-                            Store (0x0A, Local0)
-                        }
-
-                        Store (Local0, LBTN)
-                        ^^^^ATKD.IANE (Add (Local0, 0x10))
+                        Store (0x0A, Local0)
                     }
                 }
             }
+            ElseIf (LLess (LBTN, 0x0A))
+            {
+                Increment (LBTN)
+            }
             Else
             {
-                If (LLess (LBTN, 0x0A))
-                {
-                    Increment (LBTN)
-                }
-                Else
-                {
-                    Store (0x0A, LBTN)
-                }
-
-                STBR ()
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE (Add (LBTN, 0x10))
-                }
+                Store (0x0A, LBTN)
             }
 
             Return (One)
@@ -20091,14 +19607,11 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     ^^^^ATKD.IANE (Local0)
                 }
             }
-            Else
+            ElseIf (LEqual (BLCT, One))
             {
-                If (LEqual (BLCT, One))
+                If (ATKP)
                 {
-                    If (ATKP)
-                    {
-                        ^^^^ATKD.IANE (0x35)
-                    }
+                    ^^^^ATKD.IANE (0x35)
                 }
             }
         }
@@ -20128,71 +19641,47 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Add (Local0, 0x60, Local1)
                 }
-                Else
+                ElseIf (LLess (Local0, 0x10))
                 {
-                    If (LLess (Local0, 0x10))
+                    Subtract (Local0, 0x08, Local1)
+                    Add (Local1, 0x8C, Local1)
+                }
+                ElseIf (LLess (Local0, 0x20))
+                {
+                    And (Local0, 0x07, Local1)
+                    Add (Local1, 0xA0, Local1)
+                }
+                ElseIf (LLess (Local0, 0x40))
+                {
+                    While (One)
                     {
-                        Subtract (Local0, 0x08, Local1)
-                        Add (Local1, 0x8C, Local1)
-                    }
-                    Else
-                    {
-                        If (LLess (Local0, 0x20))
+                        Store (ToInteger (Local0), _T_0)
+                        If (LEqual (_T_0, 0x20))
                         {
-                            And (Local0, 0x07, Local1)
-                            Add (Local1, 0xA0, Local1)
+                            Store (0xD0, Local1)
                         }
-                        Else
+                        ElseIf (LEqual (_T_0, 0x21))
                         {
-                            If (LLess (Local0, 0x40))
-                            {
-                                While (One)
-                                {
-                                    Store (ToInteger (Local0), _T_0)
-                                    If (LEqual (_T_0, 0x20))
-                                    {
-                                        Store (0xD0, Local1)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x21))
-                                        {
-                                            Store (0xD1, Local1)
-                                        }
-                                        Else
-                                        {
-                                            If (LEqual (_T_0, 0x22))
-                                            {
-                                                Store (0xD2, Local1)
-                                            }
-                                            Else
-                                            {
-                                                If (LEqual (_T_0, 0x24))
-                                                {
-                                                    Store (0xD3, Local1)
-                                                }
-                                                Else
-                                                {
-                                                    If (LEqual (_T_0, 0x28))
-                                                    {
-                                                        Store (0xD4, Local1)
-                                                    }
-                                                    Else
-                                                    {
-                                                        If (LEqual (_T_0, 0x30))
-                                                        {
-                                                            Store (0xD5, Local1)
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                            Store (0xD1, Local1)
+                        }
+                        ElseIf (LEqual (_T_0, 0x22))
+                        {
+                            Store (0xD2, Local1)
+                        }
+                        ElseIf (LEqual (_T_0, 0x24))
+                        {
+                            Store (0xD3, Local1)
+                        }
+                        ElseIf (LEqual (_T_0, 0x28))
+                        {
+                            Store (0xD4, Local1)
+                        }
+                        ElseIf (LEqual (_T_0, 0x30))
+                        {
+                            Store (0xD5, Local1)
+                        }
 
-                                    Break
-                                }
-                            }
-                        }
+                        Break
                     }
                 }
 
@@ -20225,12 +19714,9 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     ^^^^ATKD.IANE (0x6B)
                 }
             }
-            Else
+            ElseIf (ATKP)
             {
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE (0x6F)
-                }
+                ^^^^ATKD.IANE (0x6F)
             }
         }
 
@@ -20406,128 +19892,92 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                         }
                     }
                 }
-                Else
+                ElseIf (And (^^^^ATKD.WAPF, One))
                 {
-                    If (And (^^^^ATKD.WAPF, One))
+                    If (And (Local0, One))
                     {
-                        If (And (Local0, One))
+                        If (WLDP)
                         {
-                            If (WLDP)
+                            If (LEqual (And (^^^RP03.WLAN.VNUM, 0xFFFF), 0x8086))
                             {
-                                If (LEqual (And (^^^RP03.WLAN.VNUM, 0xFFFF), 0x8086))
-                                {
-                                    Sleep (0x09C4)
-                                }
-
-                                If (LEqual (WRPS, One))
-                                {
-                                    ^^^^ATKD.IANE (0x5E)
-                                }
-                                Else
-                                {
-                                    ^^^^ATKD.IANE (0x5F)
-                                }
+                                Sleep (0x09C4)
                             }
 
-                            If (LAnd (WLDP, BTDP))
+                            If (LEqual (WRPS, One))
                             {
-                                Sleep (0x0DAC)
+                                ^^^^ATKD.IANE (0x5E)
                             }
-
-                            If (BTDP)
+                            Else
                             {
-                                If (BRPS)
-                                {
-                                    OBTD (One)
-                                    ^^^^ATKD.IANE (0x7D)
-                                }
-                                Else
-                                {
-                                    OBTD (Zero)
-                                    ^^^^ATKD.IANE (0x7E)
-                                }
-                            }
-                        }
-                        Else
-                        {
-                            If (WLDP)
-                            {
-                                Store (WRST, WRPS)
                                 ^^^^ATKD.IANE (0x5F)
                             }
+                        }
 
-                            If (LAnd (WLDP, BTDP))
+                        If (LAnd (WLDP, BTDP))
+                        {
+                            Sleep (0x0DAC)
+                        }
+
+                        If (BTDP)
+                        {
+                            If (BRPS)
                             {
-                                Sleep (0x0DAC)
+                                OBTD (One)
+                                ^^^^ATKD.IANE (0x7D)
                             }
-
-                            If (BTDP)
+                            Else
                             {
-                                Store (BRST, BRPS)
                                 OBTD (Zero)
                                 ^^^^ATKD.IANE (0x7E)
                             }
                         }
                     }
-                    Else
+                    ElseIf (WLDP)
                     {
-                        If (And (Local0, One))
+                        Store (WRST, WRPS)
+                        ^^^^ATKD.IANE (0x5F)
+                    }
+                }
+                ElseIf (And (Local0, One))
+                {
+                    If (WLDP)
+                    {
+                        If (WRPS)
                         {
-                            If (WLDP)
-                            {
-                                If (WRPS)
-                                {
-                                    OWLD (One)
-                                    ^^^^ATKD.IANE (0x5E)
-                                }
-                                Else
-                                {
-                                    OWLD (Zero)
-                                    ^^^^ATKD.IANE (0x5F)
-                                }
-                            }
-
-                            If (LAnd (WLDP, BTDP))
-                            {
-                                Sleep (0x0DAC)
-                            }
-
-                            If (BTDP)
-                            {
-                                If (BRPS)
-                                {
-                                    OBTD (One)
-                                    ^^^^ATKD.IANE (0x7D)
-                                }
-                                Else
-                                {
-                                    OBTD (Zero)
-                                    ^^^^ATKD.IANE (0x7E)
-                                }
-                            }
+                            OWLD (One)
+                            ^^^^ATKD.IANE (0x5E)
                         }
                         Else
                         {
-                            If (WLDP)
-                            {
-                                Store (WRST, WRPS)
-                                OWLD (Zero)
-                                ^^^^ATKD.IANE (0x5F)
-                            }
-
-                            If (LAnd (WLDP, BTDP))
-                            {
-                                Sleep (0x0DAC)
-                            }
-
-                            If (BTDP)
-                            {
-                                Store (BRST, BRPS)
-                                OBTD (Zero)
-                                ^^^^ATKD.IANE (0x7E)
-                            }
+                            OWLD (Zero)
+                            ^^^^ATKD.IANE (0x5F)
                         }
                     }
+
+                    If (LAnd (WLDP, BTDP))
+                    {
+                        Sleep (0x0DAC)
+                    }
+
+                    If (BTDP)
+                    {
+                        If (BRPS)
+                        {
+                            OBTD (One)
+                            ^^^^ATKD.IANE (0x7D)
+                        }
+                        Else
+                        {
+                            OBTD (Zero)
+                            ^^^^ATKD.IANE (0x7E)
+                        }
+                    }
+                }
+                ElseIf (WLDP)
+                {
+                    Store (WRST, WRPS)
+                    OWLD (Zero)
+                    ^^^^ATKD.IANE (0x5F)
                 }
             }
         }
@@ -20988,15 +20438,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
             {
                 Return (Zero)
             }
-            Else
+            ElseIf (LAnd (Local1, 0x00010000))
             {
-                If (LAnd (Local1, 0x00010000))
-                {
-                    WDPE (Local0, And (Local1, 0x00010000))
-                    Return (One)
-                }
-
-                Return (Zero)
+                WDPE (Local0, And (Local1, 0x00010000))
+                Return (One)
             }
         }
     }
@@ -21226,30 +20671,20 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 And (Local0, Local1, Local0)
                 ShiftRight (Local0, Arg0, Local0)
             }
+            ElseIf (LLess (Arg0, 0x20))
+            {
+                Store (GL10, Local0)
+                Subtract (Arg0, 0x10, Local2)
+            }
+            ElseIf (LLess (Arg0, 0x40))
+            {
+                Store (GL20, Local0)
+                Subtract (Arg0, 0x20, Local2)
+            }
             Else
             {
-                If (LLess (Arg0, 0x20))
-                {
-                    Store (GL10, Local0)
-                    Subtract (Arg0, 0x10, Local2)
-                }
-                Else
-                {
-                    If (LLess (Arg0, 0x40))
-                    {
-                        Store (GL20, Local0)
-                        Subtract (Arg0, 0x20, Local2)
-                    }
-                    Else
-                    {
-                        Store (GL40, Local0)
-                        Subtract (Arg0, 0x40, Local2)
-                    }
-                }
-
-                ShiftLeft (Local1, Local2, Local1)
-                And (Local0, Local1, Local0)
-                ShiftRight (Local0, Local2, Local0)
+                Store (GL40, Local0)
+                Subtract (Arg0, 0x40, Local2)
             }
 
             Return (Local0)
@@ -21275,18 +20710,15 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                     Store (GL10, Local0)
                     Subtract (Arg0, 0x10, Local2)
                 }
+                ElseIf (LLess (Arg0, 0x40))
+                {
+                    Store (GL20, Local0)
+                    Subtract (Arg0, 0x20, Local2)
+                }
                 Else
                 {
-                    If (LLess (Arg0, 0x40))
-                    {
-                        Store (GL20, Local0)
-                        Subtract (Arg0, 0x20, Local2)
-                    }
-                    Else
-                    {
-                        Store (GL40, Local0)
-                        Subtract (Arg0, 0x40, Local2)
-                    }
+                    Store (GL40, Local0)
+                    Subtract (Arg0, 0x40, Local2)
                 }
 
                 ShiftLeft (Local1, Local2, Local1)
@@ -21298,16 +20730,13 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
                 {
                     Store (Local0, GL10)
                 }
+                ElseIf (LLess (Arg0, 0x40))
+                {
+                    Store (Local0, GL20)
+                }
                 Else
                 {
-                    If (LLess (Arg0, 0x40))
-                    {
-                        Store (Local0, GL20)
-                    }
-                    Else
-                    {
-                        Store (Local0, GL40)
-                    }
+                    Store (Local0, GL40)
                 }
             }
             Else
@@ -22509,38 +21938,37 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "Apple ", "Notebook", 0x00000012)
         \_SB.PCI0.GFX0.OWAK (Arg0)
         OEMW (Arg0)
     }
-    Method (B1B2, 2, NotSerialized) { Return (Or (Arg0, ShiftLeft (Arg1, 8))) }
+
+    
+
     Method (DTGP, 5, NotSerialized)
     {
-        If (LEqual (Arg0, Buffer (0x10)
-        {
-            /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44,
-            /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B
-        }))
+        If (LEqual (Arg0, ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
         {
             If (LEqual (Arg1, One))
             {
                 If (LEqual (Arg2, Zero))
                 {
                     Store (Buffer (One)
-                    {
-                        0x03
-                    }, Arg4)
+                        {
+                             0x03                                           
+                        }, Arg4)
                     Return (One)
                 }
+
                 If (LEqual (Arg2, One))
                 {
                     Return (One)
                 }
             }
         }
+
         Store (Buffer (One)
-        {
-            0x00
-        }, Arg4)
+            {
+                 0x00                                           
+            }, Arg4)
         Return (Zero)
     }
-
-    
+    Method (B1B2, 2, NotSerialized) { Return (Or (Arg0, ShiftLeft (Arg1, 8))) }
 }
 

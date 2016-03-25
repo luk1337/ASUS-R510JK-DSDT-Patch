@@ -1,24 +1,24 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-2.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of SSDT-2.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "SSDT"
  *     Length           0x00000AD8 (2776)
  *     Revision         0x01
- *     Checksum         0x30
+ *     Checksum         0xBC
  *     OEM ID           "PmRef"
  *     OEM Table ID     "CpuPm"
  *     OEM Revision     0x00003000 (12288)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20120711 (538052369)
  */
-DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
+DefinitionBlock ("", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
 {
 
     External (_PR_.CPU0, ProcessorObj)
@@ -36,16 +36,16 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
         Name (SSDT, Package (0x0C)
         {
             "CPU0IST ", 
-            0xC89AFA98, 
+            0xAC9AFA98, 
             0x00000539, 
             "APIST   ", 
-            0xC9AE2618, 
+            0xADAE2618, 
             0x000005AA, 
             "CPU0CST ", 
-            0xC9AE2C18, 
+            0xADAE2C18, 
             0x000003D3, 
             "APCST   ", 
-            0xC9AE1D98, 
+            0xADAE1D98, 
             0x00000119
         })
         Name (\PDC0, 0x80000000)
@@ -61,7 +61,7 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
 
     Scope (\_PR)
     {
-        OperationRegion (PPMT, SystemMemory, 0xCAB13F18, 0x003A)
+        OperationRegion (PPMT, SystemMemory, 0xAEB13F18, 0x003A)
         Field (PPMT, AnyAcc, Lock, Preserve)
         {
             PGRV,   8, 
@@ -158,8 +158,7 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
             CreateDWordField (UID0, 0x04, EID1)
             CreateDWordField (UID0, 0x08, EID2)
             CreateDWordField (UID0, 0x0C, EID3)
-            If (LNot (LAnd (LAnd (LEqual (IID0, EID0), LEqual (IID1, EID1)), LAnd (LEqual (
-                IID2, EID2), LEqual (IID3, EID3)))))
+            If (LNot (LAnd (LAnd (LEqual (IID0, EID0), LEqual (IID1, EID1)), LAnd (LEqual (IID2, EID2), LEqual (IID3, EID3)))))
             {
                 Store (0x06, STS0)
                 Return (Arg3)
@@ -192,8 +191,7 @@ DefinitionBlock ("SSDT-2.aml", "SSDT", 1, "PmRef", "CpuPm", 0x00003000)
             Or (And (PDC0, 0x7FFFFFFF), CAP0, PDC0)
             If (And (CFGD, 0x7A))
             {
-                If (LAnd (LAnd (And (CFGD, 0x0200), And (PDC0, 0x18)), LNot (
-                    And (SDTL, 0x02))))
+                If (LAnd (LAnd (And (CFGD, 0x0200), And (PDC0, 0x18)), LNot (And (SDTL, 0x02))))
                 {
                     Or (SDTL, 0x02, SDTL)
                     OperationRegion (CST0, SystemMemory, DerefOf (Index (SSDT, 0x07)), DerefOf (Index (SSDT, 0x08)))

@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-1.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of SSDT-1.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -18,7 +18,7 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20120711 (538052369)
  */
-DefinitionBlock ("SSDT-1.aml", "SSDT", 1, "PmRef", "Cpu0Ist", 0x00003000)
+DefinitionBlock ("", "SSDT", 1, "PmRef", "Cpu0Ist", 0x00003000)
 {
 
     External (_PR_.CFGD, FieldUnitObj)
@@ -29,7 +29,7 @@ DefinitionBlock ("SSDT-1.aml", "SSDT", 1, "PmRef", "Cpu0Ist", 0x00003000)
 
     Scope (\_PR.CPU0)
     {
-        Name (_PPC, Zero)  // _PPC: Performance Present Capabilites
+        Name (_PPC, Zero)  // _PPC: Performance Present Capabilities
         Method (_PCT, 0, NotSerialized)  // _PCT: Performance Control
         {
             Store (\_PR.CPPC, \_PR.CPU0._PPC)

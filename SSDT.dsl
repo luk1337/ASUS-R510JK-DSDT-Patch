@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20141107-64 [Jan  2 2015]
- * Copyright (c) 2000 - 2014 Intel Corporation
+ * AML/ASL+ Disassembler version 20160313-64(RM)
+ * Copyright (c) 2000 - 2016 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT.aml, Fri Dec  4 23:05:21 2015
+ * Disassembly of SSDT.aml, Fri Mar 25 18:29:30 2016
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -18,7 +18,7 @@
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20120711 (538052369)
  */
-DefinitionBlock ("SSDT.aml", "SSDT", 1, "Intel", "zpodd", 0x00001000)
+DefinitionBlock ("", "SSDT", 1, "Intel", "zpodd", 0x00001000)
 {
 
     External (_SB_.PCI0.SAT0, DeviceObj)
@@ -78,47 +78,38 @@ DefinitionBlock ("SSDT.aml", "SSDT", 1, "Intel", "zpodd", 0x00001000)
                                     Break
                                 }
                             }
-                            Else
+                            ElseIf (LEqual (_T_0, One))
                             {
-                                If (LEqual (_T_0, One))
+                                Return (One)
+                            }
+                            ElseIf (LEqual (_T_0, 0x02))
+                            {
+                                Store (Zero, GPE3)
+                                If (LEqual (And (\GL00, 0x08), 0x08))
                                 {
-                                    Return (One)
+                                    Or (\GIV0, 0x08, \GIV0)
                                 }
                                 Else
                                 {
-                                    If (LEqual (_T_0, 0x02))
-                                    {
-                                        Store (Zero, GPE3)
-                                        If (LEqual (And (\GL00, 0x08), 0x08))
-                                        {
-                                            Or (\GIV0, 0x08, \GIV0)
-                                        }
-                                        Else
-                                        {
-                                            And (\GIV0, 0xF7, \GIV0)
-                                        }
-
-                                        Or (\GL08, 0x10, \GL08)
-                                        Sleep (0xC8)
-                                        Store (One, GPS3)
-                                        Store (One, GPE3)
-                                        Return (One)
-                                    }
-                                    Else
-                                    {
-                                        If (LEqual (_T_0, 0x03))
-                                        {
-                                            Store (Zero, GPE3)
-                                            Store (One, GPS3)
-                                            And (\GL08, 0xEF, \GL08)
-                                            Return (One)
-                                        }
-                                        Else
-                                        {
-                                            Return (Zero)
-                                        }
-                                    }
+                                    And (\GIV0, 0xF7, \GIV0)
                                 }
+
+                                Or (\GL08, 0x10, \GL08)
+                                Sleep (0xC8)
+                                Store (One, GPS3)
+                                Store (One, GPE3)
+                                Return (One)
+                            }
+                            ElseIf (LEqual (_T_0, 0x03))
+                            {
+                                Store (Zero, GPE3)
+                                Store (One, GPS3)
+                                And (\GL08, 0xEF, \GL08)
+                                Return (One)
+                            }
+                            Else
+                            {
+                                Return (Zero)
                             }
 
                             Break
